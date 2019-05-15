@@ -1,10 +1,11 @@
 import React from 'react';
 import {Container, Button} from 'reactstrap';
+import IndexView from './components/user/menuListView/IndexView'
 
 function App() {
   return (
     <Container>
-      <Button style={{width:'100%'}}>11</Button>
+      <IndexView />
     </Container>
   );
 }

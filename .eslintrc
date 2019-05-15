@@ -1,0 +1,12 @@
+{
+  "extends": ["react-app", "airbnb", "prettier"],
+  "rules": {
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-unused-vars": 0,
+    "object-curly-spacing": 0,
+    "eol-last": 0
+  }
+}
