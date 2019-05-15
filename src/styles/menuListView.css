@@ -1,5 +1,6 @@
 .IndexView-head {
   display: flex;
+  margin-bottom: 10px;
 }
 .IndexView {
   margin-left: 2px;
