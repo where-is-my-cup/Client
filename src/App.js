@@ -1,12 +1,14 @@
-import React from 'react';
-import {Container, Button} from 'reactstrap';
-import IndexView from './components/user/menuListView/IndexView'
+import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+import MenuListView from "./pages/MenuListView";
+import Test from "./pages/Test";
 
 function App() {
   return (
-    <Container>
-      <IndexView />
-    </Container>
+    <BrowserRouter>
+      <Route exact path="/" component={MenuListView} />
+      <Route path="/about" component={Test} />
+    </BrowserRouter>
   );
 }
 
