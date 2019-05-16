@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/login.css";
 import { Row, Col, Input, Button } from "reactstrap";
-import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 export default class LoginView extends Component {
   constructor(props) {
@@ -27,11 +27,21 @@ export default class LoginView extends Component {
   };
 
   onClick = e => {
-    console.log(this.props.history);
     if (e.target.id === "login-su") {
       this.props.history.push("/signUp");
     } else {
+      this.auth();
     }
+  };
+
+  auth = () => {
+    axios
+      .post("https://localhost:3001/user", {
+        id: this.state.id,
+        pw: this.state.pw,
+        admin: this.state.admin
+      })
+      .then(data => {});
   };
 
   render() {
