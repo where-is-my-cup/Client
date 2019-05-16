@@ -31,6 +31,34 @@ export default class IndexView extends Component {
           category: "디저트",
           price: "6,100",
           imgPath: "img_3.png"
+        },
+        {
+          name: "초콜릿 케익",
+          count: 2,
+          category: "디저트",
+          price: "6,100",
+          imgPath: "img_3.png"
+        },
+        {
+          name: "초콜릿 케익",
+          count: 2,
+          category: "디저트",
+          price: "6,100",
+          imgPath: "img_3.png"
+        },
+        {
+          name: "초콜릿 케익",
+          count: 2,
+          category: "디저트",
+          price: "6,100",
+          imgPath: "img_3.png"
+        },
+        {
+          name: "초콜릿 케익",
+          count: 2,
+          category: "디저트",
+          price: "6,100",
+          imgPath: "img_3.png"
         }
       ]
     };
@@ -45,7 +73,6 @@ export default class IndexView extends Component {
     }, 500);
   };
   render() {
-    console.log(this.state.searchKeyword);
     return (
       <div>
         <div className="IndexView-head">

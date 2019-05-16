@@ -57,15 +57,11 @@ export default class MenuTab extends Component {
           >
             {categorys.map((category, index) => (
               <TabPane tabId={index + 1 + ""} key={index}>
-                <Row>
-                  <Col sm="12">
-                    <MenuCardTable
-                      menuList={menus.filter(menu => {
-                        return menu.category === category;
-                      })}
-                    />
-                  </Col>
-                </Row>
+                <MenuCardTable
+                  menuList={menus.filter(menu => {
+                    return menu.category === category;
+                  })}
+                />
               </TabPane>
             ))}
           </TabContent>
@@ -80,15 +76,11 @@ export default class MenuTab extends Component {
             style={{ marginTop: "20px", border: "5px" }}
           >
             <TabPane tabId={"1"}>
-              <Row>
-                <Col sm="12">
-                  <MenuCardTable
-                    menuList={menus.filter(menu => {
-                      return menu.name.includes(searchKeyword);
-                    })}
-                  />
-                </Col>
-              </Row>
+              <MenuCardTable
+                menuList={menus.filter(menu => {
+                  return menu.name.includes(searchKeyword);
+                })}
+              />
             </TabPane>
           </TabContent>
         </div>
