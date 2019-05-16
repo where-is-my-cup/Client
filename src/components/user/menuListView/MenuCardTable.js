@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+import MenuCard from "./MenuCard";
 
 export default class MenuCardTable extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div>
         {this.props.menuList.map((data, index) => (
-          <div key={index}>{data.name}</div>
+          <div key={index}>
+            <MenuCard menu={data} />
+          </div>
         ))}
       </div>
     );

@@ -1,10 +1,10 @@
-.IndexView-head {
-  display: flex;
-  margin-bottom: 10px;
-}
 .IndexView {
   margin-left: 2px;
   margin-right: 2px;
+}
+.IndexView-head {
+  display: flex;
+  margin-bottom: 10px;
 }
 .InputSearch {
 }

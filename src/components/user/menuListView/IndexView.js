@@ -10,9 +10,27 @@ export default class IndexView extends Component {
     this.state = {
       categorys: ["음료", "디저트"],
       menus: [
-        { name: "아메리카노", count: 3, category: "음료" },
-        { name: "카페라떼", count: 5, category: "음료" },
-        { name: "초콜릿 케익", count: 2, category: "디저트" }
+        {
+          name: "아메리카노",
+          count: 3,
+          category: "음료",
+          price: "4,100",
+          imgPath: "img_1.png"
+        },
+        {
+          name: "카페라떼",
+          count: 5,
+          category: "음료",
+          price: "4,800",
+          imgPath: "img_2.png"
+        },
+        {
+          name: "초콜릿 케익",
+          count: 2,
+          category: "디저트",
+          price: "6,100",
+          imgPath: "img_3.png"
+        }
       ]
     };
   }
