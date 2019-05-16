@@ -9,7 +9,6 @@ export class OrderMenuList extends React.Component {
         <span className="list-details">
           {list.hotIce} / {list.size} / {list.count}
         </span>
-        {/* <span>{list.price}</span> */}
       </div>
     );
   }
