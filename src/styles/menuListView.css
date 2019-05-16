@@ -6,9 +6,11 @@
   display: flex;
   margin-bottom: 10px;
 }
-.InputSearch {
+.IndexView-body {
+  border-radius: 5px;
+  border: 1px solid;
+  height: 500px;
 }
-.ButtonSearch {
-}
-.ButtonPocket {
+.IndexView-foot {
+  margin-top: 10px;
 }
