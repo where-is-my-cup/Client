@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Row,
-  Col
-} from "reactstrap";
+import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import MenuCardTable from "./MenuCardTable";
 
 export default class MenuTab extends Component {
@@ -49,7 +41,6 @@ export default class MenuTab extends Component {
               </NavItem>
             ))}
           </Nav>
-
           {/* 각 카테고리 별 메류 리스트를 보여주는 부분  */}
           <TabContent
             activeTab={this.state.activeTab}
@@ -71,18 +62,14 @@ export default class MenuTab extends Component {
             searchKeyword === "" ? { display: "none" } : { display: "inline" }
           }
         >
-          <TabContent
-            activeTab={this.state.activeTab}
-            style={{ marginTop: "20px", border: "5px" }}
-          >
-            <TabPane tabId={"1"}>
-              <MenuCardTable
-                menuList={menus.filter(menu => {
-                  return menu.name.includes(searchKeyword);
-                })}
-              />
-            </TabPane>
-          </TabContent>
+          <h4 style={{ marginLeft: "10px", marginTop: "20px", border: "5px" }}>
+            '{searchKeyword}'로 검색한 결과
+          </h4>
+          <MenuCardTable
+            menuList={menus.filter(menu => {
+              return menu.name.includes(searchKeyword);
+            })}
+          />
         </div>
       </div>
     );

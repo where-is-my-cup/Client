@@ -77,9 +77,8 @@ export default class IndexView extends Component {
       <div>
         <div className="IndexView-head">
           <Input
-            className="IndexView InputSearch"
             type="search"
-            placeholder="search placeholder"
+            placeholder="메뉴를 입력하세요."
             onChange={e => {
               this.search(e.target.value);
             }}

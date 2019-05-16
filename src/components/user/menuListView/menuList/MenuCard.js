@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Image } from "react-bootstrap";
-import { Card, CardTitle, CardText, Row, Col } from "reactstrap";
+import { Card, CardText, Row, Col } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../../../styles/menuListView.css";
 
@@ -13,7 +12,7 @@ export default class MenuCard extends Component {
           <Row>
             <Col sm="6">
               <img
-                src={require("../../../../../image/" + this.props.menu.imgPath)}
+                src={require("../../../../image/" + this.props.menu.imgPath)}
                 className="img-circle"
                 width={menuImageSize}
                 height={menuImageSize}
