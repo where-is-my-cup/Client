@@ -1,0 +1,47 @@
+#login-body {
+  width: 100%;
+  height: 800px;
+  position: relative;
+  background-image: url("../image/login.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#login-title {
+  font-size: 50pt;
+  font-weight: bold;
+  color: white;
+  text-shadow: 5px 5px 5px grey;
+  width: 50%;
+  height: 20%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20%;
+  bottom: 0;
+  margin: auto;
+}
+
+#login-inputbox {
+  width: 50%;
+  height: 30%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  bottom: 0;
+  margin: auto;
+}
+
+.login-button {
+  background: antiquewhite !important;
+  border-color: antiquewhite !important;
+  color: darkslategray !important;
+  float: right;
+}
+
+.login-input {
+  margin-top: 5%;
+}
