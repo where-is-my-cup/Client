@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, Button, Card, Row, Col } from "reactstrap";
 import MenuTab from "./menuList/MenuTab";
+import { getMenuList, getCategorys } from "./getServerDate";
 import "../../../styles/menuListView.css";
 
 export default class IndexView extends Component {
@@ -9,58 +10,8 @@ export default class IndexView extends Component {
     this.Timeout = undefined;
     this.state = {
       searchKeyword: "",
-      categorys: ["음료", "디저트"],
-      menus: [
-        {
-          name: "아메리카노",
-          count: 3,
-          category: "음료",
-          price: "4,100",
-          imgPath: "img_1.png"
-        },
-        {
-          name: "카페라떼",
-          count: 5,
-          category: "음료",
-          price: "4,800",
-          imgPath: "img_2.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        }
-      ]
+      categorys: [],
+      menus: []
     };
   }
   search = keyword => {
@@ -71,6 +22,14 @@ export default class IndexView extends Component {
         searchKeyword: keyword
       });
     }, 500);
+  };
+  componentDidMount = async () => {
+    var menuList = await getMenuList();
+    var categorys = await getCategorys();
+    this.setState({
+      categorys: categorys,
+      menus: menuList
+    });
   };
   render() {
     return (
