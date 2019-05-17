@@ -9,9 +9,14 @@ export default class IndexView extends Component {
     super(props);
 
     this.state = {
-      test: 1
+      selectMenuId: 0
     };
   }
+  componentDidMount = () => {
+    this.setState({
+      selectMenuId: this.props.location.state
+    });
+  };
   render() {
     const menuImageSize = 200;
     return (

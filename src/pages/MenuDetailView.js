@@ -1,10 +1,10 @@
 import React from "react";
 import IndexView from "../components/user/menuDetailView/IndexView";
 
-function App() {
+function App(props) {
   return (
     <div>
-      <IndexView />
+      <IndexView location={props.location} />
     </div>
   );
 }
