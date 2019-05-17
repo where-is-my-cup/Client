@@ -11,15 +11,17 @@ export default class MenuCard extends Component {
         <Card body>
           <Row>
             <Col sm="6">
-              <img
-                src={require("../../../../image/" + this.props.menu.imgPath)}
-                className="img-circle"
-                width={menuImageSize}
-                height={menuImageSize}
-              />
+              {
+                <img
+                  src={require("../../../../image/" + this.props.menu.imageURL)}
+                  className="img-circle"
+                  width={menuImageSize}
+                  height={menuImageSize}
+                />
+              }
             </Col>
             <Col>
-              <h2>{this.props.menu.name}</h2>
+              <h2>{this.props.menu.menuname}</h2>
               <CardText>₩ {this.props.menu.price}</CardText>
             </Col>
           </Row>

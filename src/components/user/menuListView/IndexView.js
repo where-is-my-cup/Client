@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Input, Button, Card, Row, Col } from "reactstrap";
 import MenuTab from "./menuList/MenuTab";
-import { getMenuList, getCategorys } from "./getServerDate";
+import { getMenuList } from "./getServerDate";
 import "../../../styles/menuListView.css";
 
 export default class IndexView extends Component {
@@ -9,6 +9,7 @@ export default class IndexView extends Component {
     super(props);
     this.Timeout = undefined;
     this.state = {
+      storeId: 2,
       searchKeyword: "",
       categorys: [],
       menus: []
@@ -24,11 +25,17 @@ export default class IndexView extends Component {
     }, 500);
   };
   componentDidMount = async () => {
-    var menuList = await getMenuList();
-    var categorys = await getCategorys();
+    var menuList = await getMenuList(this.state.storeId);
+    var categorys = [];
+
+    menuList.data.forEach(element => {
+      if (!categorys.includes(element.category))
+        categorys.push(element.category);
+    });
+
     this.setState({
       categorys: categorys,
-      menus: menuList
+      menus: menuList.data
     });
   };
   render() {

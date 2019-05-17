@@ -1,18 +1,17 @@
-export const getMenuList = () => {
-  let url = "http://localhost:5000/menu/menulist";
-  return requestServer(url);
-};
-export const getCategorys = () => {
-  let url = "http://localhost:5000/menu/category";
-  return requestServer(url);
-};
+import axios from "axios";
 
-const requestServer = url => {
-  return new Promise(resolve => {
-    fetch(url)
-      .then(response => response.json())
-      .then(value => {
-        resolve(value);
-      });
+export const getMenuList = storeId => {
+  let url = "http://localhost:5000/menu/menulist";
+
+  let params = {
+    storeId: storeId
+  };
+  return requestServer(url, "get", params);
+};
+const requestServer = (url, method, params) => {
+  return axios({
+    method: method,
+    url: url,
+    params: params
   });
 };

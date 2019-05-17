@@ -67,7 +67,7 @@ export default class MenuTab extends Component {
           </h4>
           <MenuCardTable
             menuList={menus.filter(menu => {
-              return menu.name.includes(searchKeyword);
+              return menu.menuname.includes(searchKeyword);
             })}
           />
         </div>
