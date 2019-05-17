@@ -33,7 +33,8 @@
   padding: 0 300px;
 }
 .MenuDetail-selection {
-  border: 10px;
   width: 0px;
   margin: 0 auto;
+}
+.MenuDetail-foot {
 }
