@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input, Button, Card, Row, Col } from "reactstrap";
-import MenuTab from "./menuList/MenuTab";
+import MenuTab from "../../common/MenuTab";
 import { getMenuList } from "./getServerDate";
 import "../../../styles/menuListView.css";
 
