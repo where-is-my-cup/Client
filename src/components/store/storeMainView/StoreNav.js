@@ -8,7 +8,7 @@ export class StoreNav extends React.Component {
     return (
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row>
-          <Col sm={2}>
+          <Col sm={3}>
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
                 <Nav.Link eventKey="first"> 주문 현황</Nav.Link>
