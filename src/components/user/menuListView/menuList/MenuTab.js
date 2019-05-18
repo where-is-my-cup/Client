@@ -10,7 +10,7 @@ export default class MenuTab extends Component {
       activeTab: "1"
     };
   }
-  toggle = tab => {
+  _toggle = tab => {
     if (this.state.activeTab !== tab) {
       this.setState({
         activeTab: tab
@@ -33,7 +33,7 @@ export default class MenuTab extends Component {
                 <NavLink
                   onClick={() => {
                     index++;
-                    this.toggle(index + "");
+                    this._toggle(index + "");
                   }}
                 >
                   {category}

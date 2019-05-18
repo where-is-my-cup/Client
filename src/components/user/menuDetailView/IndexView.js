@@ -19,22 +19,22 @@ export default class IndexView extends Component {
       selectMenu: this.props.location.state
     });
   };
-  setKind = value => {
+  _setKind = value => {
     this.setState({
       kind: value
     });
   };
-  setSize = value => {
+  _setSize = value => {
     this.setState({
       size: value
     });
   };
-  setCount = value => {
+  _setCount = value => {
     this.setState({
       count: value
     });
   };
-  addOrderList = () => {
+  _addOrderList = () => {
     var orderList = localStorage.getItem("orderList");
     orderList ? (orderList = JSON.parse(orderList)) : (orderList = []);
     orderList.push(this.state);
@@ -73,7 +73,7 @@ export default class IndexView extends Component {
                 <div className="MenuDetail-selection">
                   <SelectOptional
                     data={["ICE", "HOT"]}
-                    setKind={this.setKind}
+                    setKind={this._setKind}
                   />
                 </div>
               </Col>
@@ -81,7 +81,7 @@ export default class IndexView extends Component {
                 <div className="MenuDetail-selection">
                   <SelectOptional
                     data={["S", "M", "L"]}
-                    setSize={this.setSize}
+                    setSize={this._setSize}
                   />
                 </div>
               </Col>
@@ -90,7 +90,7 @@ export default class IndexView extends Component {
                   <input
                     type="number"
                     onChange={e => {
-                      this.setCount(e.target.value);
+                      this._setCount(e.target.value);
                     }}
                   />
                 </div>
@@ -103,7 +103,7 @@ export default class IndexView extends Component {
             <Col sm="12" md={{ size: 6, offset: 5 }}>
               <div style={{ display: "flex", margin: "30px" }}>
                 <div style={{ padding: "30px" }}>
-                  <Button outline color="primary" onClick={this.addOrderList}>
+                  <Button outline color="primary" onClick={this._addOrderList}>
                     확인
                   </Button>
                 </div>
