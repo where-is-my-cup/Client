@@ -44,7 +44,6 @@ export default class IndexView extends Component {
   render() {
     let { imageURL } = this.state.selectMenu;
     const menuImageSize = 200;
-    console.log(this.state);
     return (
       <div className="MenuDetail">
         <div className="MenuDetail-head">주문 상세메뉴</div>
@@ -109,7 +108,13 @@ export default class IndexView extends Component {
                   </Button>
                 </div>
                 <div style={{ padding: "30px" }}>
-                  <Button outline color="primary">
+                  <Button
+                    outline
+                    color="primary"
+                    onClick={() => {
+                      this.props.history.push("/menuList");
+                    }}
+                  >
                     취소
                   </Button>
                 </div>
