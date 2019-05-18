@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MenuCard from "./MenuCard";
+import MenuCard from "../user/menuListView/menuList/MenuCard";
 
 export default class MenuCardTable extends Component {
   render() {
@@ -14,13 +14,7 @@ export default class MenuCardTable extends Component {
               marginRight: "10px"
             }}
           >
-            <div
-              onClick={() => {
-                this.props.selectMenu(data);
-              }}
-            >
-              <MenuCard menu={data} />
-            </div>
+            <MenuCard menu={data} />
           </div>
         ))}
       </div>

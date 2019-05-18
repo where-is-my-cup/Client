@@ -52,7 +52,6 @@ export default class MenuTab extends Component {
                   menuList={menus.filter(menu => {
                     return menu.category === category;
                   })}
-                  selectMenu={this.props.selectMenu}
                 />
               </TabPane>
             ))}

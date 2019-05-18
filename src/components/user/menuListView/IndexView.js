@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, Button, Card, Row, Col } from "reactstrap";
-import MenuTab from "./menuList/MenuTab";
+import MenuTab from "../../common/MenuTab";
+import { getMenuList } from "./getServerDate";
 import "../../../styles/menuListView.css";
 
 export default class IndexView extends Component {
@@ -8,59 +9,10 @@ export default class IndexView extends Component {
     super(props);
     this.Timeout = undefined;
     this.state = {
+      storeId: 2,
       searchKeyword: "",
-      categorys: ["음료", "디저트"],
-      menus: [
-        {
-          name: "아메리카노",
-          count: 3,
-          category: "음료",
-          price: "4,100",
-          imgPath: "img_1.png"
-        },
-        {
-          name: "카페라떼",
-          count: 5,
-          category: "음료",
-          price: "4,800",
-          imgPath: "img_2.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        },
-        {
-          name: "초콜릿 케익",
-          count: 2,
-          category: "디저트",
-          price: "6,100",
-          imgPath: "img_3.png"
-        }
-      ]
+      categorys: [],
+      menus: []
     };
   }
   search = keyword => {
@@ -72,14 +24,34 @@ export default class IndexView extends Component {
       });
     }, 500);
   };
+
+  selectMenu = sendData => {
+    this.props.history.push({
+      pathname: "/menuDetail",
+      state: sendData
+    });
+  };
+
+  componentDidMount = async () => {
+    var menuList = await getMenuList(this.state.storeId);
+    var categorys = [];
+
+    menuList.data.forEach(element => {
+      if (!categorys.includes(element.category))
+        categorys.push(element.category);
+    });
+    this.setState({
+      categorys: categorys,
+      menus: menuList.data
+    });
+  };
   render() {
     return (
       <div>
         <div className="IndexView-head">
           <Input
-            className="IndexView InputSearch"
             type="search"
-            placeholder="search placeholder"
+            placeholder="메뉴를 입력하세요."
             onChange={e => {
               this.search(e.target.value);
             }}
@@ -93,7 +65,7 @@ export default class IndexView extends Component {
         </div>
 
         <div className="IndexView-body">
-          <MenuTab menuState={this.state} />
+          <MenuTab menuState={this.state} selectMenu={this.selectMenu} />
         </div>
 
         <div className="IndexView-foot">
