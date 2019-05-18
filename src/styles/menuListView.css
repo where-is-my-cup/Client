@@ -1,10 +1,10 @@
 /* Menu List view */
 .IndexView {
-  margin-left: 2px;
-  margin-right: 2px;
+  margin: 0 2px;
 }
 .IndexView-head {
   display: flex;
+  padding: 10px 20px 0 20px;
   margin-bottom: 10px;
 }
 .IndexView-body {
@@ -14,6 +14,7 @@
   overflow-y: scroll;
 }
 .IndexView-foot {
+  padding: 10px 20px;
   margin-top: 10px;
 }
 
