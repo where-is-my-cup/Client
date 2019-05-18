@@ -45,6 +45,7 @@ export default class IndexView extends Component {
       menus: menuList.data
     });
   };
+
   render() {
     return (
       <div>
