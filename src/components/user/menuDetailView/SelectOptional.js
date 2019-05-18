@@ -8,7 +8,15 @@ export default class SelectOptional extends Component {
       <div>
         <ButtonGroup>
           {this.props.data.map(data => (
-            <Button>{data}</Button>
+            <Button
+              onClick={() => {
+                this.props.setKind === undefined
+                  ? this.props.setSize(data)
+                  : this.props.setKind(data);
+              }}
+            >
+              {data}
+            </Button>
           ))}
         </ButtonGroup>
       </div>

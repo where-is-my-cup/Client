@@ -4,7 +4,7 @@ import IndexView from "../components/user/menuDetailView/IndexView";
 function App(props) {
   return (
     <div>
-      <IndexView location={props.location} />
+      <IndexView location={props.location} history={props.history} />
     </div>
   );
 }

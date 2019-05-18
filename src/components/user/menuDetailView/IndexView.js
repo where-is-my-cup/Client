@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Button } from "reactstrap";
 import "../../../styles/menuListView.css";
-import img from "../../../image/img_1.png";
 import SelectOptional from "./SelectOptional";
 
 export default class IndexView extends Component {
@@ -9,7 +8,10 @@ export default class IndexView extends Component {
     super(props);
 
     this.state = {
-      selectMenu: 0
+      selectMenu: "",
+      kind: "ICE",
+      size: "S",
+      count: 0
     };
   }
   componentDidMount = () => {
@@ -17,17 +19,50 @@ export default class IndexView extends Component {
       selectMenu: this.props.location.state
     });
   };
+  setKind = value => {
+    this.setState({
+      kind: value
+    });
+  };
+  setSize = value => {
+    this.setState({
+      size: value
+    });
+  };
+  setCount = value => {
+    this.setState({
+      count: value
+    });
+  };
+  addOrderList = () => {
+    var orderList = localStorage.getItem("orderList");
+    orderList ? (orderList = JSON.parse(orderList)) : (orderList = []);
+    orderList.push(this.state);
+    localStorage.setItem("orderList", JSON.stringify(orderList));
+    this.props.history.push("/menuList");
+  };
   render() {
-    console.log(this.state.selectMenu);
+    let { imageURL } = this.state.selectMenu;
     const menuImageSize = 200;
+    console.log(this.state);
     return (
       <div className="MenuDetail">
         <div className="MenuDetail-head">주문 상세메뉴</div>
         <div className="MenuDetail-body">
           <div className="MenuDetail-menuInfo">
-            <img src={img} width={menuImageSize} height={menuImageSize} />
+            {
+              <img
+                src={
+                  imageURL === undefined
+                    ? ""
+                    : require("../../../image/" + imageURL)
+                }
+                width={menuImageSize}
+                height={menuImageSize}
+              />
+            }
             <div className="MenuDetail-textInfo">
-              <h1>{this.state.selectMenu.name}</h1>
+              <h1>{this.state.selectMenu.menuname}</h1>
               <h5 style={{ marginTop: "50px" }}>
                 {this.state.selectMenu.description}
               </h5>
@@ -37,17 +72,28 @@ export default class IndexView extends Component {
             <Row>
               <Col>
                 <div className="MenuDetail-selection">
-                  <SelectOptional data={["ICE", "HOT"]} />
+                  <SelectOptional
+                    data={["ICE", "HOT"]}
+                    setKind={this.setKind}
+                  />
                 </div>
               </Col>
               <Col>
                 <div className="MenuDetail-selection">
-                  <SelectOptional data={["S", "M", "L"]} />
+                  <SelectOptional
+                    data={["S", "M", "L"]}
+                    setSize={this.setSize}
+                  />
                 </div>
               </Col>
               <Col>
                 <div className="MenuDetail-selection">
-                  <input type="number" />
+                  <input
+                    type="number"
+                    onChange={e => {
+                      this.setCount(e.target.value);
+                    }}
+                  />
                 </div>
               </Col>
             </Row>
@@ -58,7 +104,7 @@ export default class IndexView extends Component {
             <Col sm="12" md={{ size: 6, offset: 5 }}>
               <div style={{ display: "flex", margin: "30px" }}>
                 <div style={{ padding: "30px" }}>
-                  <Button outline color="primary">
+                  <Button outline color="primary" onClick={this.addOrderList}>
                     확인
                   </Button>
                 </div>
