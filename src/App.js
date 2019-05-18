@@ -16,9 +16,10 @@ function App() {
         <Route exact path="/" component={LoginView} />
         <Route path="/about" component={Test} />
         <Route path="/signUp" component={SignUp} />
+        <Route path="/store" component={StoreMainView} />
         <Route path="/menuList" component={MenuListView} />
         <Route path="/menuDetail" component={MenuDetailView} />
-        <Route path="/store" component={StoreMainView} />
+        
       </BrowserRouter>
     </Container>
   );
