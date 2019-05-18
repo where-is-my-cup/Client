@@ -73,7 +73,6 @@ export default class IndexView extends Component {
     }, 500);
   };
   selectMenu = sendData => {
-    console.log(1);
     this.props.history.push({
       pathname: "/menuDetail",
       state: sendData
