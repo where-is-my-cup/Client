@@ -15,7 +15,7 @@ export default class IndexView extends Component {
       menus: []
     };
   }
-  search = keyword => {
+  _search = keyword => {
     if (this.Timeout !== undefined) clearTimeout(this.Timeout);
     let bindThis = this;
     this.Timeout = setTimeout(function() {
@@ -25,7 +25,7 @@ export default class IndexView extends Component {
     }, 500);
   };
 
-  selectMenu = sendData => {
+  _selectMenu = sendData => {
     this.props.history.push({
       pathname: "/menuDetail",
       state: sendData
@@ -54,7 +54,7 @@ export default class IndexView extends Component {
             type="search"
             placeholder="메뉴를 입력하세요."
             onChange={e => {
-              this.search(e.target.value);
+              this._search(e.target.value);
             }}
           />
           <Button outline color="primary" className="IndexView ButtonSearch">
@@ -66,7 +66,7 @@ export default class IndexView extends Component {
         </div>
 
         <div className="IndexView-body">
-          <MenuTab menuState={this.state} selectMenu={this.selectMenu} />
+          <MenuTab menuState={this.state} selectMenu={this._selectMenu} />
         </div>
 
         <div className="IndexView-foot">
