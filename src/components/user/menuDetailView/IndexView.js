@@ -9,15 +9,16 @@ export default class IndexView extends Component {
     super(props);
 
     this.state = {
-      selectMenuId: 0
+      selectMenu: 0
     };
   }
   componentDidMount = () => {
     this.setState({
-      selectMenuId: this.props.location.state
+      selectMenu: this.props.location.state
     });
   };
   render() {
+    console.log(this.state.selectMenu);
     const menuImageSize = 200;
     return (
       <div className="MenuDetail">
@@ -26,8 +27,10 @@ export default class IndexView extends Component {
           <div className="MenuDetail-menuInfo">
             <img src={img} width={menuImageSize} height={menuImageSize} />
             <div className="MenuDetail-textInfo">
-              <h1>아메리카노</h1>
-              <h5 style={{ marginTop: "50px" }}>설명 부분 입니다.</h5>
+              <h1>{this.state.selectMenu.name}</h1>
+              <h5 style={{ marginTop: "50px" }}>
+                {this.state.selectMenu.description}
+              </h5>
             </div>
           </div>
           <div className="MenuDetail-select">
