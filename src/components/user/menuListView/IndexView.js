@@ -24,6 +24,14 @@ export default class IndexView extends Component {
       });
     }, 500);
   };
+
+  selectMenu = sendData => {
+    this.props.history.push({
+      pathname: "/menuDetail",
+      state: sendData
+    });
+  };
+
   componentDidMount = async () => {
     var menuList = await getMenuList(this.state.storeId);
     var categorys = [];
@@ -32,12 +40,12 @@ export default class IndexView extends Component {
       if (!categorys.includes(element.category))
         categorys.push(element.category);
     });
-
     this.setState({
       categorys: categorys,
       menus: menuList.data
     });
   };
+
   render() {
     return (
       <div>
@@ -58,7 +66,7 @@ export default class IndexView extends Component {
         </div>
 
         <div className="IndexView-body">
-          <MenuTab menuState={this.state} />
+          <MenuTab menuState={this.state} selectMenu={this.selectMenu} />
         </div>
 
         <div className="IndexView-foot">

@@ -14,7 +14,13 @@ export default class MenuCardTable extends Component {
               marginRight: "10px"
             }}
           >
-            <MenuCard menu={data} />
+            <div
+              onClick={() => {
+                this.props.selectMenu(data);
+              }}
+            >
+              <MenuCard menu={data} />
+            </div>
           </div>
         ))}
       </div>

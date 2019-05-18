@@ -52,6 +52,7 @@ export default class MenuTab extends Component {
                   menuList={menus.filter(menu => {
                     return menu.category === category;
                   })}
+                  selectMenu={this.props.selectMenu}
                 />
               </TabPane>
             ))}
@@ -68,7 +69,6 @@ export default class MenuTab extends Component {
           <MenuCardTable
             menuList={menus.filter(menu => {
               return menu.menuname.includes(searchKeyword);
-              console.log(1);
             })}
           />
         </div>

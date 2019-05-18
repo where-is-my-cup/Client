@@ -1,3 +1,4 @@
+/* Menu List view */
 .IndexView {
   margin: 0 2px;
 }
@@ -15,4 +16,26 @@
 .IndexView-foot {
   padding: 10px 20px;
   margin-top: 10px;
+}
+
+/* Menu Detail View */
+.MenuDetail {
+  margin: 0 20px;
+}
+.MenuDetail-head {
+  padding: 20px;
+  font-size: 30px;
+}
+.MenuDetail-menuInfo {
+  display: flex;
+  margin: 50px;
+}
+.MenuDetail-textInfo {
+  padding: 0 300px;
+}
+.MenuDetail-selection {
+  width: 0px;
+  margin: 0 auto;
+}
+.MenuDetail-foot {
 }
