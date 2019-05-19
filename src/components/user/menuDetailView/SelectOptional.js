@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
-import { isModuleSpecifier } from "@babel/types";
 
 export default class SelectOptional extends Component {
   render() {

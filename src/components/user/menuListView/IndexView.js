@@ -37,8 +37,8 @@ export default class IndexView extends Component {
     var categorys = [];
 
     menuList.data.forEach(element => {
-      if (!categorys.includes(element.category))
-        categorys.push(element.category);
+      if (!categorys.includes(element.menus[0].category))
+        categorys.push(element.menus[0].category);
     });
     this.setState({
       categorys: categorys,
@@ -60,7 +60,14 @@ export default class IndexView extends Component {
           <Button outline color="primary" className="IndexView ButtonSearch">
             검
           </Button>
-          <Button outline color="primary" className="IndexView ButtonPocket">
+          <Button
+            outline
+            color="primary"
+            className="IndexView ButtonPocket"
+            onClick={() => {
+              this.props.history.push("/menuOrderList");
+            }}
+          >
             장
           </Button>
         </div>
