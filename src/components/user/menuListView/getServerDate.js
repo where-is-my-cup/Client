@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getMenuList = storeId => {
-  let url = "http://localhost:5000/menu/menulist";
+  let url = "http://localhost:3001/menu/menulist";
 
   let params = {
     storeId: storeId

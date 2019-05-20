@@ -18,7 +18,7 @@ export default class MenuTab extends Component {
     }
   };
   render() {
-    const { categorys, menus, searchKeyword } = this.props.menuState;
+    const { categorys, menus, searchKeyword, storeData } = this.props.menuState;
     return (
       <div>
         <div
@@ -48,12 +48,21 @@ export default class MenuTab extends Component {
           >
             {categorys.map((category, index) => (
               <TabPane tabId={index + 1 + ""} key={index}>
-                <MenuCardTable
-                  menuList={menus.filter(menu => {
-                    return menu.menus[0].category === category;
-                  })}
-                  selectMenu={this.props.selectMenu}
-                />
+                {storeData === undefined ? (
+                  <MenuCardTable
+                    menuList={menus.filter(menu => {
+                      return menu.menus[0].category === category;
+                    })}
+                    selectMenu={this.props.selectMenu}
+                  />
+                ) : (
+                  <MenuCardTable
+                    menuList={menus.filter(menu => {
+                      return menu.menus[0].category === category;
+                    })}
+                    selectMenu={this.props.selectMenu}
+                  />
+                )}
               </TabPane>
             ))}
           </TabContent>

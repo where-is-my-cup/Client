@@ -6,7 +6,8 @@ import Test from "./pages/Test";
 import SignUp from "./pages/SignUp";
 import MenuListView from "./pages/MenuListView";
 import MenuDetailView from "./pages/MenuDetailView";
-import menuOrderList from "./pages/MenuOrderListView";
+import MenuOrderList from "./pages/MenuOrderListView";
+import SelectStore from "./pages/SelectStoreView";
 import { Container } from "reactstrap";
 import "./styles/app.css";
 
@@ -21,7 +22,8 @@ function App() {
 
         <Route path="/menuList" component={MenuListView} />
         <Route path="/menuDetail" component={MenuDetailView} />
-        <Route path="/menuOrderList" component={menuOrderList} />
+        <Route path="/menuOrderList" component={MenuOrderList} />
+        <Route path="/selectStore" component={SelectStore} />
       </BrowserRouter>
     </Container>
   );
