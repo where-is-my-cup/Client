@@ -1,0 +1,23 @@
+#signUp-body {
+  width: 100%;
+  height: 800px;
+  padding-top: 80px;
+}
+
+#signUp-inputBox {
+  width: 60%;
+  text-align: center;
+  margin: auto;
+}
+
+.signUp-inputFam {
+  margin-top: 20px;
+}
+
+.signUp-inputButton {
+  margin-right: 10px;
+}
+
+#signUp-buttonFam {
+  float: right !important;
+}

@@ -9,11 +9,11 @@ export default class LoginView extends Component {
     this.state = {
       id: "",
       pw: "",
-      admin: false
+      admin: "false"
     };
   }
 
-  inputOnChange = e => {
+  _inputOnChange = e => {
     if (e.target.id === "login-id") {
       const id = e.target.value;
       this.setState({ id: id });
@@ -26,22 +26,33 @@ export default class LoginView extends Component {
     }
   };
 
-  onClick = e => {
+  _onClick = e => {
     if (e.target.id === "login-su") {
       this.props.history.push("/signUp");
     } else {
-      this.auth();
+      this._auth();
     }
   };
 
-  auth = () => {
+  _auth = () => {
     axios
-      .post("https://localhost:3001/user", {
-        id: this.state.id,
-        pw: this.state.pw,
-        admin: this.state.admin
+      .post("http://localhost:3001/user/login", {
+        isID: this.state.id,
+        isPW: this.state.pw,
+        isAdmin: this.state.admin
       })
-      .then(data => {});
+      .then(({ data }) => {
+        if (data.message) {
+          localStorage.setItem("token", data.token);
+          alert("로그인되셨습니다.");
+        } else {
+          alert("비밀번호 혹은 ");
+        }
+      });
+  };
+
+  _toggle = () => {
+    this.setState();
   };
 
   render() {
@@ -53,27 +64,27 @@ export default class LoginView extends Component {
             id="login-id"
             className="login-input"
             placeholder="ID를 입력해주세요."
-            onChange={this.inputOnChange}
+            onChange={this._inputOnChange}
           />
           <Input
             id="login-pw"
             className="login-input"
             placeholder="PW를 입력해주세요."
             type="password"
-            onChange={this.inputOnChange}
+            onChange={this._inputOnChange}
           />
           <Row id="login-bottenBox" className="login-input">
             <Col md="6" xs="4" sm="4">
-              <Input type="checkbox" onChange={this.inputOnChange} />
+              <Input type="checkbox" onChange={this._inputOnChange} />
               <span style={{ color: "aliceblue", fontWeight: "bold" }}> Admin </span>
             </Col>
             <Col md="3" xs="4" sm="4">
-              <Button id="login-su" className="login-button" onClick={this.onClick}>
+              <Button id="login-su" className="login-button" onClick={this._onClick}>
                 SignUp
               </Button>
             </Col>
             <Col md="3" xs="4" sm="4">
-              <Button id="login-lg" className="login-button" onClick={this.onClick}>
+              <Button id="login-lg" className="login-button" onClick={this._onClick}>
                 Login
               </Button>
             </Col>
