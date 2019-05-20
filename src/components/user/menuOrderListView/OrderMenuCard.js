@@ -5,6 +5,7 @@ import "../../../styles/menuListView.css";
 export default class OrderMenuCard extends Component {
   render() {
     const { keys, menu } = this.props;
+    console.log(menu);
     const { selectMenu, kind, size, count } = menu;
     const { imageURL } = selectMenu;
     const menuImageSize = 80;
@@ -27,7 +28,15 @@ export default class OrderMenuCard extends Component {
             </Col>
             <Col>
               <h2>{selectMenu.menuname}</h2>
-              <CardText>{kind + " / " + size + " / " + count}</CardText>
+              <CardText>
+                {kind +
+                  " / " +
+                  size +
+                  " / " +
+                  count +
+                  "       ₩" +
+                  selectMenu.price}
+              </CardText>
             </Col>
             <Col>
               <Button

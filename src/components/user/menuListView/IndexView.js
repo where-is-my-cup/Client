@@ -26,9 +26,12 @@ export default class IndexView extends Component {
   };
 
   _selectMenu = sendData => {
+    var menuInfo = sendData.menus[0];
+    menuInfo.price = sendData.price;
+    menuInfo.count = sendData.count;
     this.props.history.push({
       pathname: "/menuDetail",
-      state: sendData
+      state: menuInfo
     });
   };
 

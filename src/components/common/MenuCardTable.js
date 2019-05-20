@@ -5,7 +5,6 @@ import OrderMenuCard from "../user/menuOrderListView/OrderMenuCard";
 export default class MenuCardTable extends Component {
   render() {
     var { menuList, changeOrderList } = this.props;
-
     return (
       <div>
         {menuList.map((data, index) => (

@@ -35,9 +35,22 @@ export default class IndexView extends Component {
     });
   };
   _addOrderList = () => {
+    if (this.state.selectMenu.count < this.state.count) {
+      alert(`수량은 최대 ${this.state.selectMenu.count}개 까지 가능합니다.`);
+      return;
+    }
     var orderList = localStorage.getItem("orderList");
     orderList ? (orderList = JSON.parse(orderList)) : (orderList = []);
-    orderList.push(this.state);
+    var flag = true;
+    for (var orderMenu of orderList) {
+      if (orderMenu.selectMenu.id === this.state.selectMenu.id) {
+        orderMenu.count =
+          parseInt(orderMenu.count) + parseInt(this.state.count);
+        flag = false;
+        break;
+      }
+    }
+    if (flag) orderList.push(this.state);
     localStorage.setItem("orderList", JSON.stringify(orderList));
     this.props.history.push("/menuList");
   };
@@ -65,6 +78,7 @@ export default class IndexView extends Component {
               <h5 style={{ marginTop: "50px" }}>
                 {this.state.selectMenu.description}
               </h5>
+              가격 : {this.state.selectMenu.price}원
             </div>
           </div>
           <div className="MenuDetail-select">

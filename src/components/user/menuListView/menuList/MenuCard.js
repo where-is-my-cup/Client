@@ -5,11 +5,10 @@ import "../../../../styles/menuListView.css";
 export default class MenuCard extends Component {
   render() {
     const menuImageSize = 80;
-    console.log(this.props.menu);
     return (
       <div
         onClick={() => {
-          this.props.selectMenu(this.props.menu.menus[0]);
+          this.props.selectMenu(this.props.menu);
         }}
       >
         <Card body>
