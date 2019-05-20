@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../styles/login.css";
 import { Row, Col, Input, Button } from "reactstrap";
 import axios from "axios";
+import swal from "sweetalert";
 
 export default class LoginView extends Component {
   constructor(props) {
@@ -44,9 +45,14 @@ export default class LoginView extends Component {
       .then(({ data }) => {
         if (data.message) {
           localStorage.setItem("token", data.token);
-          alert("로그인되셨습니다.");
+          swal("Login!", `반가워요! ${data.message}님`, "success").then(() => {
+            console.log("여기");
+            JSON.parse(data.admin)
+              ? this.props.history.push("/store")
+              : this.props.history.push("/menuList");
+          });
         } else {
-          alert("비밀번호 혹은 ");
+          swal("Error!", "ID나 PW가 잘못되었습니다.!", "error");
         }
       });
   };
