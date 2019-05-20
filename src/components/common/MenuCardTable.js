@@ -1,26 +1,30 @@
 import React, { Component } from "react";
 import MenuCard from "../user/menuListView/menuList/MenuCard";
+import OrderMenuCard from "../user/menuOrderListView/OrderMenuCard";
 
 export default class MenuCardTable extends Component {
   render() {
+    var { menuList, changeOrderList } = this.props;
     return (
       <div>
-        {this.props.menuList.map((data, index) => (
+        {menuList.map((data, index) => (
           <div
-            key={index}
             style={{
               marginTop: "5px",
               marginLeft: "10px",
               marginRight: "10px"
             }}
+            key={index}
           >
-            <div
-              onClick={() => {
-                this.props.selectMenu(data);
-              }}
-            >
-              <MenuCard menu={data} />
-            </div>
+            {changeOrderList === undefined ? (
+              <MenuCard menu={data} selectMenu={this.props.selectMenu} />
+            ) : (
+              <OrderMenuCard
+                menu={data}
+                keys={index}
+                changeOrderList={changeOrderList}
+              />
+            )}
           </div>
         ))}
       </div>
