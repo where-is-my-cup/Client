@@ -10,13 +10,15 @@ export default class IndexView extends Component {
     super(props);
     this.state = {
       orderList: [{ count: 0, kind: "1", selectMenu: {}, size: 1 }],
+      storeId: undefined,
       show: false
     };
   }
   componentDidMount = () => {
     var orderList = JSON.parse(localStorage.getItem("orderList"));
     this.setState({
-      orderList
+      orderList,
+      storeId: this.props.location.storeId
     });
   };
   _deleteOrderList = index => {
@@ -39,6 +41,12 @@ export default class IndexView extends Component {
   _closeConfirm = () => {
     this.setState({
       show: false
+    });
+  };
+  _clickCancle = () => {
+    this.props.history.push({
+      pathname: "/menuList",
+      storeId: this.state.storeId
     });
   };
   render() {
@@ -83,9 +91,7 @@ export default class IndexView extends Component {
                       <Button
                         outline
                         color="primary"
-                        onClick={() => {
-                          this.props.history.push("/menuList");
-                        }}
+                        onClick={this._clickCancle}
                       >
                         뒤로가기
                       </Button>
