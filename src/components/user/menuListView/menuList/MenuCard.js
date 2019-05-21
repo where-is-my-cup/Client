@@ -5,6 +5,7 @@ import "../../../../styles/menuListView.css";
 export default class MenuCard extends Component {
   render() {
     const menuImageSize = 80;
+    console.log(this.props.menu.price);
     return (
       <div
         onClick={() => {
@@ -13,24 +14,28 @@ export default class MenuCard extends Component {
       >
         <Card body>
           <Row>
-            <Col sm="6">
+            <Col sm="3">
               {
                 <img
-                  src={require("../../../../image/" +
-                    this.props.menu.menus[0].imageURL)}
+                  src={require("../../../../image/" + this.props.menu.imageURL)}
                   className="img-circle"
                   width={menuImageSize}
                   height={menuImageSize}
                 />
               }
             </Col>
-            <Col>
-              <h2>{this.props.menu.menus[0].menuname}</h2>
+            <Col sm="6">
+              <h2>{this.props.menu.menuname}</h2>
+              {this.props.menu.description}
             </Col>
-            <Col>
-              <CardText>₩ {this.props.menu.price}</CardText>
-              <CardText>개수 : {this.props.menu.count}</CardText>
-            </Col>
+            {this.props.menu.price !== undefined ? (
+              <Col>
+                <CardText>₩ {this.props.menu.price}</CardText>
+                <CardText>개수 : {this.props.menu.count}</CardText>
+              </Col>
+            ) : (
+              <div />
+            )}
           </Row>
         </Card>
       </div>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
-import MenuCardTable from "./MenuCardTable";
+import StoreCardTable from "./StoreCardTable";
 
-export default class MenuTab extends Component {
+export default class StoreTab extends Component {
   constructor(props) {
     super(props);
 
@@ -18,7 +18,12 @@ export default class MenuTab extends Component {
     }
   };
   render() {
-    const { categorys, menus, searchKeyword, storeData } = this.props.menuState;
+    const {
+      categorys,
+      myStore,
+      totalStore,
+      searchKeyword
+    } = this.props.storeData;
     return (
       <div>
         <div
@@ -46,25 +51,20 @@ export default class MenuTab extends Component {
             activeTab={this.state.activeTab}
             style={{ marginTop: "20px", border: "5px" }}
           >
-            {categorys.map((category, index) => (
-              <TabPane tabId={index + 1 + ""} key={index}>
-                {storeData === undefined ? (
-                  <MenuCardTable
-                    menuList={menus.filter(menu => {
-                      return menu.menus[0].category === category;
-                    })}
-                    selectMenu={this.props.selectMenu}
-                  />
-                ) : (
-                  <MenuCardTable
-                    menuList={menus.filter(menu => {
-                      return menu.menus[0].category === category;
-                    })}
-                    selectMenu={this.props.selectMenu}
-                  />
-                )}
+            <TabPane tabId={"1"}>
+              <StoreCardTable
+                storeList={myStore}
+                selectStore={this.props.selectStore}
+              />
+            </TabPane>
+            {
+              <TabPane tabId={"2"}>
+                <StoreCardTable
+                  storeList={totalStore}
+                  selectStore={this.props.selectStore}
+                />
               </TabPane>
-            ))}
+            }
           </TabContent>
         </div>
         <div
@@ -75,11 +75,14 @@ export default class MenuTab extends Component {
           <h4 style={{ marginLeft: "10px", marginTop: "20px", border: "5px" }}>
             '{searchKeyword}'로 검색한 결과
           </h4>
-          <MenuCardTable
-            menuList={menus.filter(menu => {
-              return menu.menus[0].menuname.includes(searchKeyword);
-            })}
-          />
+          {
+            <StoreCardTable
+              storeList={totalStore.filter(data => {
+                return data.storename.includes(searchKeyword);
+              })}
+              selectStore={this.props.selectStore}
+            />
+          }
         </div>
       </div>
     );

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import MenuCard from "../user/menuListView/menuList/MenuCard";
-import OrderMenuCard from "../user/menuOrderListView/OrderMenuCard";
+import MenuCard from "./MenuCard";
+import OrderMenuCard from "../../menuOrderListView/OrderMenuCard";
 
 export default class MenuCardTable extends Component {
   render() {
-    var { menuList, changeOrderList } = this.props;
+    var { menuList, storeList, changeOrderList } = this.props;
     return (
       <div>
         {menuList.map((data, index) => (

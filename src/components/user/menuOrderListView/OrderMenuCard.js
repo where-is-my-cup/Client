@@ -5,7 +5,6 @@ import "../../../styles/menuListView.css";
 export default class OrderMenuCard extends Component {
   render() {
     const { keys, menu } = this.props;
-    console.log(menu);
     const { selectMenu, kind, size, count } = menu;
     const { imageURL } = selectMenu;
     const menuImageSize = 80;

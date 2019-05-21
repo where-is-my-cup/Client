@@ -1,30 +1,55 @@
 import React, { Component } from "react";
 import { Row, Col, Button, Input, Card } from "reactstrap";
-import MenuTab from "../../common/MenuTab";
+import MenuTab from "../menuListView/menuList/MenuTab";
+import { getStoerList } from "../menuListView/getServerDate";
+import StoreTab from "./StoreTab";
 
 export default class IndexView extends Component {
   constructor(props) {
     super(props);
+    this.Timeout = undefined;
     this.state = {
-      categorys: ["My 매장, 전체 매장"],
-      storeData: [
+      userId: 2,
+      searchKeyword: "",
+      categorys: ["My 매장", "전체 매장"],
+      myStore: [],
+      totalStore: [
         {
-          id: 1,
-          storename: "성수점",
-          adress: "서울 특별시 송파구 아차산로 48",
-          tel: "02-2002-2323"
+          storename: "test이륾",
+          address: "test주소",
+          Tel: "224-4242-123"
         }
       ]
     };
   }
-  componentDidMount = () => {};
+  componentDidMount = async () => {
+    var storeList = await getStoerList(this.state.userId);
+    this.setState({
+      myStore: storeList.data
+    });
+  };
+  _selectStore = storeId => {
+    this.props.history.push({
+      pathname: "/menulist",
+      storeId: storeId
+    });
+  };
+  _search = keyword => {
+    if (this.Timeout !== undefined) clearTimeout(this.Timeout);
+    let bindThis = this;
+    this.Timeout = setTimeout(function() {
+      bindThis.setState({
+        searchKeyword: keyword
+      });
+    }, 500);
+  };
   render() {
     return (
       <div>
         <div className="IndexView-head">
           <Input
             type="search"
-            placeholder="메뉴를 입력하세요."
+            placeholder="매장을 입력하세요."
             onChange={e => {
               this._search(e.target.value);
             }}
@@ -44,24 +69,7 @@ export default class IndexView extends Component {
           </Button>
         </div>
         <div className="IndexView-body">
-          <MenuTab menuState={this.state} selectMenu={this._selectMenu} />
-        </div>
-
-        <div className="IndexView-foot">
-          <Row>
-            <Col sm="10">
-              <Card body>매장 설정 후, 주문가능 수량이 표시됩니다.</Card>
-            </Col>
-            <Col>
-              <Button
-                outline
-                color="primary"
-                className="IndexView ButtonSearch"
-              >
-                설정
-              </Button>
-            </Col>
-          </Row>
+          <StoreTab storeData={this.state} selectStore={this._selectStore} />
         </div>
       </div>
     );
