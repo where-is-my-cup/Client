@@ -46,7 +46,6 @@ export default class IndexView extends Component {
     for (var menu of this.state.orderList)
       totalPrice += menu.selectMenu.price * menu.count;
 
-    console.log(totalPrice);
     return (
       <div className="MenuDetail">
         <div className="MenuDetail-head">장바구니</div>

@@ -18,7 +18,7 @@ export default class MenuTab extends Component {
     }
   };
   render() {
-    const { categorys, menus, searchKeyword } = this.props.menuState;
+    const { categorys, menus, searchKeyword, storeData } = this.props.menuState;
     return (
       <div>
         <div
