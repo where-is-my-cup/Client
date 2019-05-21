@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
-import MenuCardTable from "./MenuCardTable";
+import MenuCardTable from "../menuList/MenuCardTable";
 
 export default class MenuTab extends Component {
   constructor(props) {
@@ -48,21 +48,12 @@ export default class MenuTab extends Component {
           >
             {categorys.map((category, index) => (
               <TabPane tabId={index + 1 + ""} key={index}>
-                {storeData === undefined ? (
-                  <MenuCardTable
-                    menuList={menus.filter(menu => {
-                      return menu.menus[0].category === category;
-                    })}
-                    selectMenu={this.props.selectMenu}
-                  />
-                ) : (
-                  <MenuCardTable
-                    menuList={menus.filter(menu => {
-                      return menu.menus[0].category === category;
-                    })}
-                    selectMenu={this.props.selectMenu}
-                  />
-                )}
+                <MenuCardTable
+                  menuList={menus.filter(menu => {
+                    return menu.category === category;
+                  })}
+                  selectMenu={this.props.selectMenu}
+                />
               </TabPane>
             ))}
           </TabContent>
@@ -77,7 +68,8 @@ export default class MenuTab extends Component {
           </h4>
           <MenuCardTable
             menuList={menus.filter(menu => {
-              return menu.menus[0].menuname.includes(searchKeyword);
+              console.log(menu);
+              return menu.menuname.includes(searchKeyword);
             })}
           />
         </div>

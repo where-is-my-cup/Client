@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Button } from "reactstrap";
-import MenuCardTable from "../../common/MenuCardTable";
+import MenuCardTable from "../menuListView/menuList/MenuCardTable";
 import EmptyOrderList from "./EmptyOrderList";
 import { sendOrderMenu } from "../menuListView/getServerDate";
 import Confirm from "./Confirm";

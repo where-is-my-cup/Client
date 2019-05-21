@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../../styles/OrderMenwList.css";
+import "../../../../styles/OrderMenwList.css";
 export class OrderMenuList extends React.Component {
   render() {
     const { list } = this.props;
@@ -15,9 +15,3 @@ export class OrderMenuList extends React.Component {
 }
 
 export default OrderMenuList;
-
-// menuName: "아메리카노",
-// hotIce: "Hot",
-// size: "M",
-// count: "5",
-// price: "25,000"

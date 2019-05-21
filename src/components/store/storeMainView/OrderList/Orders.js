@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col } from "react-bootstrap";
-import "../../../styles/Orders.css";
+import "../../../../styles/Orders.css";
 import Order from "./Order";
 
 export class Orders extends React.Component {
