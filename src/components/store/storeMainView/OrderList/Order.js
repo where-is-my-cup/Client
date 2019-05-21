@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "../../../styles/Order.css";
+import "../../../../styles/Order.css";
 import { Button, Card, Modal } from "react-bootstrap";
-import OrderMenuList from "./OrderMenuList";
+import OrderMenuList from "../OrderList/OrderMenuList";
 
 export class Order extends React.Component {
   constructor(props, context) {
@@ -29,7 +29,7 @@ export class Order extends React.Component {
       <Card style={{ width: "240px" }}>
         <Card.Body>
           <Card.Title>
-            {order.orderNumber}.{order.NickName}{" "}
+            {order.orderNumber}.{order.NickName}
           </Card.Title>
           <div className="order-list">
             {order.orderList.map((list, index) => (

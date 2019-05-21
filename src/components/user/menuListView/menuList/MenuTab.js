@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
-import MenuCardTable from "./MenuCardTable";
+import MenuCardTable from "../menuList/MenuCardTable";
 
 export default class MenuTab extends Component {
   constructor(props) {
