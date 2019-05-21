@@ -9,7 +9,7 @@ export default class IndexView extends Component {
     super(props);
     this.Timeout = undefined;
     this.state = {
-      storeId: 2,
+      storeId: undefined,
       searchKeyword: "",
       categorys: [],
       menus: []
@@ -26,26 +26,48 @@ export default class IndexView extends Component {
   };
 
   _selectMenu = sendData => {
+    if (sendData.menus === undefined) {
+      alert("매장을 선택하지 않으셨습니다. 매장을 머넞 선택해주세요.");
+      this.props.history.push({
+        pathname: "/selectstore"
+      });
+      return;
+    }
     var menuInfo = sendData.menus[0];
     menuInfo.price = sendData.price;
     menuInfo.count = sendData.count;
     this.props.history.push({
       pathname: "/menuDetail",
-      state: menuInfo
+      state: menuInfo,
+      storeId: this.state.storeId
     });
   };
-
+  _clickOrderPocket = () => {
+    this.props.history.push({
+      pathname: "/menuOrderList",
+      storeId: this.state.storeId
+    });
+  };
   componentDidMount = async () => {
-    var menuList = await getMenuList(this.state.storeId);
+    var storeId = this.props.location.storeId;
+    var menuList = await getMenuList(storeId);
     var categorys = [];
 
     menuList.data.forEach(element => {
-      if (!categorys.includes(element.menus[0].category))
-        categorys.push(element.menus[0].category);
+      if (storeId !== undefined) {
+        element.category = element.menus[0].category;
+        element.menuname = element.menus[0].menuname;
+        element.imageURL = element.menus[0].imageURL;
+        element.description = element.menus[0].description;
+      }
+      if (!categorys.includes(element.category))
+        categorys.push(element.category);
     });
+
     this.setState({
       categorys: categorys,
-      menus: menuList.data
+      menus: menuList.data,
+      storeId: storeId
     });
   };
 
@@ -67,9 +89,7 @@ export default class IndexView extends Component {
             outline
             color="primary"
             className="IndexView ButtonPocket"
-            onClick={() => {
-              this.props.history.push("/menuOrderList");
-            }}
+            onClick={this._clickOrderPocket}
           >
             장
           </Button>
@@ -89,6 +109,11 @@ export default class IndexView extends Component {
                 outline
                 color="primary"
                 className="IndexView ButtonSearch"
+                onClick={() => {
+                  this.props.history.push({
+                    pathname: "/selectstore"
+                  });
+                }}
               >
                 설정
               </Button>

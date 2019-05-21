@@ -5,7 +5,6 @@ import MenuCardTable from "../menuList/MenuCardTable";
 export default class MenuTab extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       activeTab: "1"
     };
@@ -18,7 +17,7 @@ export default class MenuTab extends Component {
     }
   };
   render() {
-    const { categorys, menus, searchKeyword, storeData } = this.props.menuState;
+    const { categorys, menus, searchKeyword } = this.props.menuState;
     return (
       <div>
         <div
@@ -68,7 +67,6 @@ export default class MenuTab extends Component {
           </h4>
           <MenuCardTable
             menuList={menus.filter(menu => {
-              console.log(menu);
               return menu.menuname.includes(searchKeyword);
             })}
           />
