@@ -5,7 +5,6 @@ import MenuCardTable from "./MenuCardTable";
 export default class MenuTab extends Component {
   constructor(props) {
     super(props);
-    ß;
     this.state = {
       activeTab: "1"
     };
