@@ -11,12 +11,14 @@ export default class IndexView extends Component {
       selectMenu: "",
       kind: "ICE",
       size: "S",
-      count: 0
+      count: 0,
+      storeId: undefined
     };
   }
   componentDidMount = () => {
     this.setState({
-      selectMenu: this.props.location.state
+      selectMenu: this.props.location.state,
+      storeId: this.props.location.storeId
     });
   };
   _setKind = value => {
@@ -52,7 +54,13 @@ export default class IndexView extends Component {
     }
     if (flag) orderList.push(this.state);
     localStorage.setItem("orderList", JSON.stringify(orderList));
-    this.props.history.push("/menuList");
+    this._clickCancle();
+  };
+  _clickCancle = () => {
+    this.props.history.push({
+      pathname: "/menuList",
+      storeId: this.state.storeId
+    });
   };
   render() {
     let { imageURL } = this.state.selectMenu;
@@ -122,13 +130,7 @@ export default class IndexView extends Component {
                   </Button>
                 </div>
                 <div style={{ padding: "30px" }}>
-                  <Button
-                    outline
-                    color="primary"
-                    onClick={() => {
-                      this.props.history.push("/menuList");
-                    }}
-                  >
+                  <Button outline color="primary" onClick={this._clickCancle}>
                     취소
                   </Button>
                 </div>

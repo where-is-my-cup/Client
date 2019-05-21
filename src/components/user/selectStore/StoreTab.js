@@ -1,13 +1,25 @@
 import React, { Component } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import StoreCardTable from "./StoreCardTable";
+import { Modal } from "react-bootstrap";
+
+import ShowMaps from "./ShowMaps";
+import Geocode from "react-geocode";
+
+const geocodingKey = "AIzaSyDG1YhW6gfmSDGtPQ7nAcjDlsdKSODt5fc";
+
+Geocode.setApiKey(geocodingKey);
+Geocode.enableDebug();
 
 export default class StoreTab extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeTab: "1"
+      activeTab: "1",
+      lat: 0,
+      lng: 0,
+      show: false
     };
   }
   _toggle = tab => {
@@ -16,6 +28,21 @@ export default class StoreTab extends Component {
         activeTab: tab
       });
     }
+  };
+  _showMaps = async address => {
+    const bind = this;
+    var response = await Geocode.fromAddress(address);
+    const { lat, lng } = response.results[0].geometry.location;
+    this.setState({
+      lat: lat,
+      lng: lng,
+      show: true
+    });
+  };
+  _closeConfirm = () => {
+    this.setState({
+      show: false
+    });
   };
   render() {
     const {
@@ -55,6 +82,7 @@ export default class StoreTab extends Component {
               <StoreCardTable
                 storeList={myStore}
                 selectStore={this.props.selectStore}
+                showMaps={this._showMaps}
               />
             </TabPane>
             {
@@ -62,6 +90,7 @@ export default class StoreTab extends Component {
                 <StoreCardTable
                   storeList={totalStore}
                   selectStore={this.props.selectStore}
+                  showMaps={this._showMaps}
                 />
               </TabPane>
             }
@@ -81,9 +110,18 @@ export default class StoreTab extends Component {
                 return data.storename.includes(searchKeyword);
               })}
               selectStore={this.props.selectStore}
+              showMaps={this._showMaps}
             />
           }
         </div>
+        <Modal show={this.state.show} onHide={this._closeConfirm}>
+          <Modal.Header closeButton>
+            <Modal.Title>위치</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ShowMaps address={this.state} />
+          </Modal.Body>
+        </Modal>
       </div>
     );
   }

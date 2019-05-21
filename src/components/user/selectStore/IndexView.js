@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Button, Input, Card } from "reactstrap";
-import MenuTab from "../menuListView/menuList/MenuTab";
+import { Button, Input } from "reactstrap";
 import { getStoerList } from "../menuListView/getServerDate";
 import StoreTab from "./StoreTab";
 

@@ -2,13 +2,12 @@ import axios from "axios";
 
 const localURL = "http://localhost:3001";
 export const getMenuList = storeId => {
-  console.log(storeId);
   let url =
     storeId === undefined
       ? localURL + "/menu/menulistAll"
       : localURL + "/menu/menulist";
   let params = {
-    storeId: 2
+    storeId: storeId
   };
   return requestServer(url, "get", params);
 };

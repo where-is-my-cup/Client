@@ -4,7 +4,7 @@ import IndexView from "../components/user/menuOrderListView/IndexView";
 function App(props) {
   return (
     <div>
-      <IndexView history={props.history} />
+      <IndexView history={props.history} location={props.location} />
     </div>
   );
 }

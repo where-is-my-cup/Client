@@ -15,7 +15,11 @@ export default class StoreCardTable extends Component {
             }}
             key={index}
           >
-            <StoreCard store={data} selectStore={this.props.selectStore} />
+            <StoreCard
+              store={data}
+              selectStore={this.props.selectStore}
+              showMaps={this.props.showMaps}
+            />
           </div>
         ))}
       </div>
