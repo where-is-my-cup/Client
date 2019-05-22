@@ -32,7 +32,7 @@ export class StoreView extends React.Component {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col sm={9}>
+            <Col sm={9} className="col-9">
               <Tab.Content>
                 <Tab.Pane eventKey="init">
                   <StoreMain />

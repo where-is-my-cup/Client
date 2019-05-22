@@ -2,67 +2,79 @@ import React, { Component } from "react";
 import "../../../../styles/Order.css";
 import { Button, Card, Modal } from "react-bootstrap";
 import OrderMenuList from "../OrderList/OrderMenuList";
+import swal from "sweetalert";
+import { async } from "q";
 
 export class Order extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-
     this.state = {
-      show: false
+      orderNumber: 0,
+      variant: "primary",
+      buttonText: "준비중...",
+      buttonState: true
     };
   }
 
-  handleClose() {
-    this.setState({ show: false });
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.order.orderNumber !== this.props.order.orderNumber) {
+      this.setState({
+        variant: "primary",
+        buttonText: "준비중...",
+        buttonState: true
+      });
+    }
+    return true;
   }
 
-  handleShow() {
-    this.setState({ show: true });
-  }
+  _handleOrder = async () => {
+    if (this.state.buttonState) {
+      var temp = await swal({
+        title: "제품준비가 되었습니까?",
+        text: "OK 버튼을 누르면 고객에게 제품완료 알림이 전송됩니다.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: false
+      });
+      if (temp) {
+        await swal("알림이 전달되었습니다.", { icon: "success" });
+        this.setState({
+          variant: "success",
+          buttonText: "제공완료",
+          buttonState: false
+        });
+      }
+    } else {
+      this.props.completeOrder(this.props.order.orderNumber);
+    }
+  };
 
   render() {
     const { order } = this.props;
     return (
-      <Card style={{ width: "240px" }}>
-        <Card.Body>
-          <Card.Title>
+      <div>
+        <Card
+          className="order-card"
+          border="primary"
+          style={{ width: "18rem" }}
+        >
+          <Card.Header>
             {order.orderNumber}.{order.NickName}
-          </Card.Title>
-          <div className="order-list">
-            {order.orderList.map((list, index) => (
-              <OrderMenuList list={list} key={index} />
-            ))}
-          </div>
-          <div>Total : {order.totalPrice}</div>
-          <Button variant="primary" onClick={this.handleShow}>
-            완료
-          </Button>
-        </Card.Body>
-
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Order check please!</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>해당 주문을 삭제 하시겠습니까?</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              취소
+          </Card.Header>
+          <Card.Body>
+            <div className="order-card-line">
+              {order.orderList.map((list, index) => (
+                <OrderMenuList list={list} key={index} />
+              ))}
+            </div>
+            <Button variant={this.state.variant} onClick={this._handleOrder}>
+              {this.state.buttonText}
             </Button>
-            <Button
-              variant="primary"
-              onClick={() => {
-                this.props.completeOrder(order.orderNumber);
-                this.handleClose();
-              }}
-            >
-              삭제
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Card>
+          </Card.Body>
+          <Card.Footer>00 : 00</Card.Footer>
+        </Card>
+      </div>
     );
   }
 }

@@ -1,4 +1,5 @@
 .orderBoard {
   display: flex;
   flex-flow: row wrap;
+  margin-left: 50px;
 }

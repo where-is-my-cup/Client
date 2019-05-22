@@ -1,4 +1,10 @@
-.order-list {
-  width: 200px;
-  height: 100px;
+.order-card {
+  border-width: thick !important;
+  width: 240px !important;
+  margin: 5px !important;
+}
+
+.order-card-line {
+  text-align: left;
+  height: 140px;
 }
