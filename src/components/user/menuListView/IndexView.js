@@ -94,7 +94,6 @@ export default class IndexView extends Component {
             장
           </Button>
         </div>
-
         <div className="IndexView-body">
           <MenuTab menuState={this.state} selectMenu={this._selectMenu} />
         </div>

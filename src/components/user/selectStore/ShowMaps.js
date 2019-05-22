@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
-
-const mapsKey = "AIzaSyDG1YhW6gfmSDGtPQ7nAcjDlsdKSODt5fc";
+import secret from "../../../secret/secret";
 
 export default class ShowMaps extends Component {
   marker = (map, maps, position) => {
@@ -18,7 +17,7 @@ export default class ShowMaps extends Component {
       <div style={{ width: "100%", height: "50vh" }}>
         {
           <GoogleMapReact
-            bootstrapURLKeys={{ key: mapsKey }}
+            bootstrapURLKeys={{ key: secret.API }}
             defaultCenter={position}
             defaultZoom={zoom}
             onGoogleApiLoaded={({ map, maps }) =>

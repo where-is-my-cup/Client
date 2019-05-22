@@ -18,6 +18,7 @@ export default class MenuTab extends Component {
   };
   render() {
     const { categorys, menus, searchKeyword } = this.props.menuState;
+
     return (
       <div>
         <div
@@ -41,21 +42,27 @@ export default class MenuTab extends Component {
             ))}
           </Nav>
           {/* 각 카테고리 별 메류 리스트를 보여주는 부분  */}
-          <TabContent
-            activeTab={this.state.activeTab}
-            style={{ marginTop: "20px", border: "5px" }}
-          >
-            {categorys.map((category, index) => (
-              <TabPane tabId={index + 1 + ""} key={index}>
-                <MenuCardTable
-                  menuList={menus.filter(menu => {
-                    return menu.category === category;
-                  })}
-                  selectMenu={this.props.selectMenu}
-                />
-              </TabPane>
-            ))}
-          </TabContent>
+          {categorys.length === 0 ? (
+            <div>해당 매장에서 등록한 메뉴가 없습니다.</div>
+          ) : (
+            <div>
+              <TabContent
+                activeTab={this.state.activeTab}
+                style={{ marginTop: "20px", border: "5px" }}
+              >
+                {categorys.map((category, index) => (
+                  <TabPane tabId={index + 1 + ""} key={index}>
+                    <MenuCardTable
+                      menuList={menus.filter(menu => {
+                        return menu.category === category;
+                      })}
+                      selectMenu={this.props.selectMenu}
+                    />
+                  </TabPane>
+                ))}
+              </TabContent>
+            </div>
+          )}
         </div>
         <div
           style={

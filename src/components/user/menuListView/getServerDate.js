@@ -1,6 +1,7 @@
 import axios from "axios";
+import secret from "../../../secret/secret";
 
-const localURL = "http://localhost:3001";
+const localURL = secret.SERVER;
 export const getMenuList = storeId => {
   let url =
     storeId === undefined

@@ -54,7 +54,7 @@ export default class MenuList extends Component {
     const menuImageSize = 80;
     return (
       <div>
-        <InputGroup>
+        <InputGroup className="store-input-group">
           <div className="input-unit">
             <img
               src={require("../../../../image/" + selectMenu.image)}
