@@ -38,13 +38,19 @@ export default class LoginView extends Component {
   _auth = () => {
     const data = { isID: this.state.id, isPW: this.state.pw, isAdmin: this.state.admin };
 
-    console.log(data);
     axios.post("http://localhost:3001/user/login", data).then(({ data }) => {
-      console.log(data);
       if (data.check) {
         localStorage.setItem("token", data.token);
         swal("Login!", `반가워요! ${data.nickname}님`, "success").then(() => {
-          data.admin ? this.props.history.push("/store") : this.props.history.push("/menuList");
+          data.admin
+            ? this.props.history.push({
+                pathname: "/store",
+                storeId: data.storeId
+              })
+            : this.props.history.push({
+                pathname: "/menuList",
+                userId: data.userId
+              });
         });
       } else {
         swal("Error!", "ID나 PW가 잘못되었습니다.!", "error");
