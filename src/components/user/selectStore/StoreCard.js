@@ -14,13 +14,14 @@ export default class StoreCard extends Component {
     return (
       <div>
         <div
+          className="Card"
           onClick={e => {
             this.props.selectStore(store.id);
           }}
           style={{ float: "left", width: "90%", marginBottom: "10px" }}
         >
           {
-            <Card body>
+            <Card body className="Card">
               <Row>
                 <Col>
                   <h2>{storeInfo.storename}</h2>

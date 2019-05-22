@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import StoreCardTable from "./StoreCardTable";
 import { Modal } from "react-bootstrap";
+import secret from "../../../secret/secret";
 
 import ShowMaps from "./ShowMaps";
 import Geocode from "react-geocode";
 
-const geocodingKey = "AIzaSyDG1YhW6gfmSDGtPQ7nAcjDlsdKSODt5fc";
-
-Geocode.setApiKey(geocodingKey);
+Geocode.setApiKey(secret.API);
 Geocode.enableDebug();
 
 export default class StoreTab extends Component {

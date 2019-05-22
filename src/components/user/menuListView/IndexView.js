@@ -3,6 +3,7 @@ import { Input, Button, Card, Row, Col } from "reactstrap";
 import MenuTab from "./menuList/MenuTab";
 import { getMenuList } from "./getServerDate";
 import "../../../styles/menuListView.css";
+import swal from "sweetalert";
 
 export default class IndexView extends Component {
   constructor(props) {
@@ -27,20 +28,30 @@ export default class IndexView extends Component {
 
   _selectMenu = sendData => {
     if (sendData.menus === undefined) {
-      alert("매장을 선택하지 않으셨습니다. 매장을 머넞 선택해주세요.");
-      this.props.history.push({
-        pathname: "/selectstore"
+      swal({
+        title: "매장을 선택하지 않으셨습니다.",
+        text: "매장 선택화면으로 이동하시겠습니까?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: false
+      }).then(willDelete => {
+        if (willDelete) {
+          this.props.history.push({
+            pathname: "/selectstore"
+          });
+          return;
+        }
       });
-      return;
+    } else {
+      var menuInfo = sendData.menus[0];
+      menuInfo.price = sendData.price;
+      menuInfo.count = sendData.count;
+      this.props.history.push({
+        pathname: "/menuDetail",
+        state: menuInfo,
+        storeId: this.state.storeId
+      });
     }
-    var menuInfo = sendData.menus[0];
-    menuInfo.price = sendData.price;
-    menuInfo.count = sendData.count;
-    this.props.history.push({
-      pathname: "/menuDetail",
-      state: menuInfo,
-      storeId: this.state.storeId
-    });
   };
   _clickOrderPocket = () => {
     this.props.history.push({
@@ -82,9 +93,9 @@ export default class IndexView extends Component {
               this._search(e.target.value);
             }}
           />
-          <Button outline color="primary" className="IndexView ButtonSearch">
+          {/*           <Button outline color="primary" className="IndexView ButtonSearch">
             검
-          </Button>
+          </Button> */}
           <Button
             outline
             color="primary"
@@ -94,7 +105,6 @@ export default class IndexView extends Component {
             장
           </Button>
         </div>
-
         <div className="IndexView-body">
           <MenuTab menuState={this.state} selectMenu={this._selectMenu} />
         </div>
@@ -105,10 +115,8 @@ export default class IndexView extends Component {
               <Card body>매장 설정 후, 주문가능 수량이 표시됩니다.</Card>
             </Col>
             <Col>
-              <Button
-                outline
-                color="primary"
-                className="IndexView ButtonSearch"
+              <button
+                className="selectStoreBtn"
                 onClick={() => {
                   this.props.history.push({
                     pathname: "/selectstore"
@@ -116,7 +124,7 @@ export default class IndexView extends Component {
                 }}
               >
                 설정
-              </Button>
+              </button>
             </Col>
           </Row>
         </div>
