@@ -54,7 +54,7 @@ export default class MenuList extends Component {
     const menuImageSize = 80;
     return (
       <div>
-        <InputGroup>
+        <InputGroup className="store-input-group">
           <div className="input-unit">
             <img
               src={require("../../../../image/" + selectMenu.image)}
@@ -99,12 +99,7 @@ export default class MenuList extends Component {
             </div>
           </div>
 
-          <Button
-            outline
-            color="primary"
-            className="menulist-save"
-            onClick={this._changeSave}
-          >
+          <Button outline color="primary" className="menulist-save" onClick={this._changeSave}>
             설정
           </Button>
         </InputGroup>
