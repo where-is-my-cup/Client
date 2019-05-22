@@ -70,10 +70,10 @@ export default class IndexView extends Component {
 
     menuList.data.forEach(element => {
       if (storeId !== undefined) {
-        element.category = element.menus[0].category;
-        element.menuname = element.menus[0].menuname;
-        element.imageURL = element.menus[0].imageURL;
-        element.description = element.menus[0].description;
+        element.category = element.category;
+        element.menuname = element.menuname;
+        element.imageURL = element.imageURL;
+        element.description = element.description;
       }
       if (!categorys.includes(element.category))
         categorys.push(element.category);

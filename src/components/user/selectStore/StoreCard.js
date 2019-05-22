@@ -6,7 +6,6 @@ export default class StoreCard extends Component {
   render() {
     var storeInfo = { storename: "", address: "" };
     var { store, showMaps } = this.props;
-    console.log(store);
     storeInfo.storename =
       store.store !== undefined ? store.store.storename : store.storename;
     storeInfo.address =
