@@ -12,10 +12,18 @@ export const getMenuList = storeId => {
   };
   return requestServer(url, "get", params);
 };
-
-export const sendOrderMenu = orderList => {
+export const sendOrderMenu = state => {
   /* 소켓으로 서버에게 주문 리스트 보내는 부분 */
-  console.log(orderList);
+  let url = localURL + "/menu/orderList";
+
+  const { orderList, storeId, userId } = state;
+  console.log(storeId);
+  let params = {
+    orderList: orderList,
+    storeId: storeId,
+    userId: userId
+  };
+  return requestServer(url, "post", params);
 };
 
 export const getStoerList = userId => {

@@ -1,4 +1,4 @@
 module.exports = {
-  API: "AIzaSyBnM86ytWtqcbzC2lPz-kO64TdnRS4p5js",
+  API: "AIzaSyBKrdz4T14Gt4GLdusAliRZblVYq_jYanI",
   SERVER: "http://localhost:3001"
 };
