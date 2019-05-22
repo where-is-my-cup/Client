@@ -28,6 +28,10 @@ export default class SignUp extends Component {
     }
   };
 
+  _back = () => {
+    this.props.history.push("/");
+  };
+
   _check = key => {
     if (key === "id") {
       this.setState({ idCheck: true });
@@ -39,7 +43,6 @@ export default class SignUp extends Component {
   };
 
   _onClick = e => {
-    console.log(this.state);
     if (
       this.state.idCheck === true &&
       this.state.pwCheck === true &&
@@ -52,7 +55,7 @@ export default class SignUp extends Component {
         nickname: this.state.nickname
       }).then(result => {
         if (result) {
-          this.props.history.push("/menuList");
+          this.props.history.push("/");
         }
       });
     } else {
@@ -82,7 +85,9 @@ export default class SignUp extends Component {
               <Button onClick={this._onClick} id="signUp-add" className="signUp-inputButton">
                 가입하기
               </Button>
-              <Button id="signUp-cancle">취소하기</Button>
+              <Button onClick={this._back} id="signUp-cancle">
+                취소하기
+              </Button>
             </InputGroup>
           </div>
         </div>
