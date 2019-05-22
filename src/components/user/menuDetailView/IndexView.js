@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Button } from "reactstrap";
 import "../../../styles/menuListView.css";
 import SelectOptional from "./SelectOptional";
+import swal from "sweetalert";
 
 export default class IndexView extends Component {
   constructor(props) {
@@ -36,25 +37,44 @@ export default class IndexView extends Component {
       count: value
     });
   };
-  _addOrderList = () => {
-    if (this.state.selectMenu.count < this.state.count) {
-      alert(`수량은 최대 ${this.state.selectMenu.count}개 까지 가능합니다.`);
-      return;
-    }
-    var orderList = localStorage.getItem("orderList");
-    orderList ? (orderList = JSON.parse(orderList)) : (orderList = []);
-    var flag = true;
-    for (var orderMenu of orderList) {
-      if (orderMenu.selectMenu.id === this.state.selectMenu.id) {
-        orderMenu.count =
-          parseInt(orderMenu.count) + parseInt(this.state.count);
-        flag = false;
-        break;
+  _addOrderList = async () => {
+    var subMessage =
+      this.state.selectMenu.menuname +
+      " / " +
+      this.state.kind +
+      " / " +
+      this.state.size +
+      " / " +
+      this.state.count;
+
+    var result = await swal({
+      title: "해당 메뉴를 장바구니에 담으시겠습니까?",
+      text: subMessage,
+      icon: "warning",
+      buttons: true,
+      dangerMode: false
+    });
+
+    if (result) {
+      if (this.state.selectMenu.count < this.state.count) {
+        alert(`수량은 최대 ${this.state.selectMenu.count}개 까지 가능합니다.`);
+        return;
       }
+      var orderList = localStorage.getItem("orderList");
+      orderList ? (orderList = JSON.parse(orderList)) : (orderList = []);
+      var flag = true;
+      for (var orderMenu of orderList) {
+        if (orderMenu.selectMenu.id === this.state.selectMenu.id) {
+          orderMenu.count =
+            parseInt(orderMenu.count) + parseInt(this.state.count);
+          flag = false;
+          break;
+        }
+      }
+      if (flag) orderList.push(this.state);
+      localStorage.setItem("orderList", JSON.stringify(orderList));
+      this._clickCancle();
     }
-    if (flag) orderList.push(this.state);
-    localStorage.setItem("orderList", JSON.stringify(orderList));
-    this._clickCancle();
   };
   _clickCancle = () => {
     this.props.history.push({

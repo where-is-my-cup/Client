@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Input } from "reactstrap";
-import { getStoerList } from "../menuListView/getServerDate";
+import { getStoerList, getStoreListAll } from "../menuListView/getServerDate";
 import StoreTab from "./StoreTab";
 
 export default class IndexView extends Component {
@@ -23,8 +23,11 @@ export default class IndexView extends Component {
   }
   componentDidMount = async () => {
     var storeList = await getStoerList(this.state.userId);
+    var storeListAll = await getStoreListAll();
+    console.log(storeList, storeListAll);
     this.setState({
-      myStore: storeList.data
+      myStore: storeList.data,
+      totalStore: storeListAll.data
     });
   };
   _selectStore = storeId => {
@@ -53,19 +56,9 @@ export default class IndexView extends Component {
               this._search(e.target.value);
             }}
           />
-          <Button outline color="primary" className="IndexView ButtonSearch">
-            검
-          </Button>
-          <Button
-            outline
-            color="primary"
-            className="IndexView ButtonPocket"
-            onClick={() => {
-              this.props.history.push("/menuOrderList");
-            }}
-          >
-            장
-          </Button>
+          {/*           <Button outline color="primary" className="IndexView ButtonSearch">
+            검색
+          </Button> */}
         </div>
         <div className="IndexView-body">
           <StoreTab storeData={this.state} selectStore={this._selectStore} />

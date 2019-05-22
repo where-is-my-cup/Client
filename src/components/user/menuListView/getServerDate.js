@@ -15,6 +15,7 @@ export const getMenuList = storeId => {
 
 export const sendOrderMenu = orderList => {
   /* 소켓으로 서버에게 주문 리스트 보내는 부분 */
+  console.log(orderList);
 };
 
 export const getStoerList = userId => {
@@ -22,6 +23,14 @@ export const getStoerList = userId => {
 
   let params = {
     userId: userId
+  };
+  return requestServer(url, "get", params);
+};
+export const getStoreListAll = () => {
+  let url = localURL + "/menu/storelistAll";
+
+  let params = {
+    userId: "1"
   };
   return requestServer(url, "get", params);
 };

@@ -4,14 +4,14 @@ import MenuCardTable from "../menuListView/menuList/MenuCardTable";
 import EmptyOrderList from "./EmptyOrderList";
 import { sendOrderMenu } from "../menuListView/getServerDate";
 import Confirm from "./Confirm";
+import swal from "sweetalert";
 
 export default class IndexView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       orderList: [{ count: 0, kind: "1", selectMenu: {}, size: 1 }],
-      storeId: undefined,
-      show: false
+      storeId: undefined
     };
   }
   componentDidMount = () => {
@@ -33,14 +33,16 @@ export default class IndexView extends Component {
     this.props.history.push("./menulist");
   };
   _orderMenu = () => {
-    this.setState({
-      show: true
-    });
-    sendOrderMenu(this.state.orderList);
-  };
-  _closeConfirm = () => {
-    this.setState({
-      show: false
+    swal({
+      title: "선택하신 메뉴로 주문을 하시겠습니까?",
+      text: "주문 이후에는 변경할 수 없습니다.",
+      icon: "warning",
+      buttons: true,
+      dangerMode: false
+    }).then(willDelete => {
+      if (willDelete) {
+        sendOrderMenu(this.state.orderList);
+      }
     });
   };
   _clickCancle = () => {
@@ -102,7 +104,6 @@ export default class IndexView extends Component {
             </div>
           </div>
         )}
-        <Confirm show={this.state.show} closeConfirm={this._closeConfirm} />
       </div>
     );
   }

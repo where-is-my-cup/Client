@@ -11,7 +11,7 @@ export default class MenuCard extends Component {
           this.props.selectMenu(this.props.menu);
         }}
       >
-        <Card body>
+        <Card body className="Card">
           <Row>
             <Col sm="3">
               {
