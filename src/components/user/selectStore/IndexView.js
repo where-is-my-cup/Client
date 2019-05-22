@@ -24,7 +24,7 @@ export default class IndexView extends Component {
   componentDidMount = async () => {
     var storeList = await getStoerList(this.state.userId);
     var storeListAll = await getStoreListAll();
-    console.log(storeList.data);
+    console.log(storeList);
     this.setState({
       myStore: storeList.data,
       totalStore: storeListAll.data,

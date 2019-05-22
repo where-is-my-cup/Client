@@ -7,6 +7,7 @@ export class Orders extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      completedIndex: [],
       orderList: [
         {
           orderNumber: "1",
@@ -86,50 +87,8 @@ export class Orders extends React.Component {
           totalPrice: "5,500"
         },
         {
-          orderNumber: "4",
-          NickName: "이중구",
-          orderList: [
-            {
-              menuName: "자몽에이드",
-              hotIce: "Ice",
-              size: "L",
-              count: "1",
-              price: "6,000"
-            }
-          ],
-          totalPrice: "5,500"
-        },
-        {
-          orderNumber: "4",
-          NickName: "이중구",
-          orderList: [
-            {
-              menuName: "자몽에이드",
-              hotIce: "Ice",
-              size: "L",
-              count: "1",
-              price: "6,000"
-            }
-          ],
-          totalPrice: "5,500"
-        },
-        {
-          orderNumber: "4",
-          NickName: "이중구",
-          orderList: [
-            {
-              menuName: "자몽에이드",
-              hotIce: "Ice",
-              size: "L",
-              count: "1",
-              price: "6,000"
-            }
-          ],
-          totalPrice: "5,500"
-        },
-        {
-          orderNumber: "4",
-          NickName: "이중구",
+          orderNumber: "5",
+          NickName: "이중구2",
           orderList: [
             {
               menuName: "자몽에이드",
@@ -144,9 +103,16 @@ export class Orders extends React.Component {
       ]
     };
   }
-
-  completeOrder = orderNumber => {
+  addCompleted = orderNumber => {
     this.setState({
+      completedIndex: [...this.state.completedIndex, orderNumber]
+    });
+  };
+  deleteCompleted = orderNumber => {
+    var arr = [...this.state.completedIndex];
+    arr.splice(arr.indexOf(orderNumber), 1);
+    this.setState({
+      completedIndex: arr,
       orderList: this.state.orderList.filter(list => {
         return list.orderNumber !== orderNumber;
       })
@@ -157,7 +123,22 @@ export class Orders extends React.Component {
     return (
       <div className="orderBoard">
         {this.state.orderList.map((order, index) => (
-          <Order order={order} key={index} completeOrder={this.completeOrder} />
+          <Order
+            order={order}
+            key={index}
+            addCompleted={this.addCompleted}
+            deleteCompleted={this.deleteCompleted}
+            variant={
+              this.state.completedIndex.includes(order.orderNumber)
+                ? "success"
+                : "primary"
+            }
+            buttonText={
+              this.state.completedIndex.includes(order.orderNumber)
+                ? "제공완료"
+                : "준비중..."
+            }
+          />
         ))}
       </div>
     );

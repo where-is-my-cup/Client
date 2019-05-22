@@ -62,8 +62,7 @@ export default class IndexView extends Component {
     });
   };
   componentDidMount = async () => {
-    var userId = 2;
-    //var userId = this.props.location.userId;
+    var userId = this.props.location.userId;
     var storeId = this.props.location.storeId;
     var menuList = await getMenuList(storeId);
     var categorys = [];
