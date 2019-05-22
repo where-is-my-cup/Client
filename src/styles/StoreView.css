@@ -3,6 +3,7 @@
   height: 800px;
   text-align: center;
   border-radius: 10px;
+  overflow-x: hidden;
 }
 
 #storeView-col {
@@ -15,3 +16,7 @@
   margin-bottom: 5px;
   margin-left: 30px;
 }
+
+/* .col-9 {
+  background-color: #007bff;
+} */

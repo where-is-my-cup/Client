@@ -84,6 +84,62 @@ export class Orders extends React.Component {
             }
           ],
           totalPrice: "5,500"
+        },
+        {
+          orderNumber: "4",
+          NickName: "이중구",
+          orderList: [
+            {
+              menuName: "자몽에이드",
+              hotIce: "Ice",
+              size: "L",
+              count: "1",
+              price: "6,000"
+            }
+          ],
+          totalPrice: "5,500"
+        },
+        {
+          orderNumber: "4",
+          NickName: "이중구",
+          orderList: [
+            {
+              menuName: "자몽에이드",
+              hotIce: "Ice",
+              size: "L",
+              count: "1",
+              price: "6,000"
+            }
+          ],
+          totalPrice: "5,500"
+        },
+        {
+          orderNumber: "4",
+          NickName: "이중구",
+          orderList: [
+            {
+              menuName: "자몽에이드",
+              hotIce: "Ice",
+              size: "L",
+              count: "1",
+              price: "6,000"
+            }
+          ],
+          totalPrice: "5,500"
+        },
+        {
+          orderNumber: "4",
+          NickName: "이중구",
+          orderList: [
+            {
+              menuName: "자몽에이드",
+              hotIce: "Ice",
+              size: "L",
+              count: "1",
+              price: "6,000"
+            }
+          ],
+          totalPrice: "5,500"
         }
       ]
     };
