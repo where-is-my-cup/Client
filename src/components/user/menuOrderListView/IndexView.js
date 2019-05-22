@@ -11,14 +11,16 @@ export default class IndexView extends Component {
     super(props);
     this.state = {
       orderList: [{ count: 0, kind: "1", selectMenu: {}, size: 1 }],
-      storeId: undefined
+      storeId: undefined,
+      userId: undefined
     };
   }
   componentDidMount = () => {
     var orderList = JSON.parse(localStorage.getItem("orderList"));
     this.setState({
       orderList,
-      storeId: this.props.location.storeId
+      storeId: this.props.location.storeId,
+      userId: this.props.location.userId
     });
   };
   _deleteOrderList = index => {
@@ -41,7 +43,7 @@ export default class IndexView extends Component {
       dangerMode: false
     }).then(willDelete => {
       if (willDelete) {
-        sendOrderMenu(this.state.orderList);
+        sendOrderMenu(this.state);
       }
     });
   };

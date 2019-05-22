@@ -14,7 +14,7 @@ export default class IndexView extends Component {
       myStore: [],
       totalStore: [
         {
-          storename: "test이륾",
+          storename: "테이블 db 없음",
           address: "test주소",
           Tel: "224-4242-123"
         }
@@ -24,16 +24,18 @@ export default class IndexView extends Component {
   componentDidMount = async () => {
     var storeList = await getStoerList(this.state.userId);
     var storeListAll = await getStoreListAll();
-    console.log(storeList, storeListAll);
+    console.log(storeList.data);
     this.setState({
       myStore: storeList.data,
-      totalStore: storeListAll.data
+      totalStore: storeListAll.data,
+      userId: this.props.location.userId
     });
   };
   _selectStore = storeId => {
     this.props.history.push({
       pathname: "/menulist",
-      storeId: storeId
+      storeId: storeId,
+      userId: this.state.userId
     });
   };
   _search = keyword => {
