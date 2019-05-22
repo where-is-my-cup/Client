@@ -52,7 +52,7 @@ export default class SignUp extends Component {
         nickname: this.state.nickname
       }).then(result => {
         if (result) {
-          this.props.history.push("/menuList");
+          this.props.history.push("/");
         }
       });
     } else {
