@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Container } from "react-bootstrap";
+import React from "react";
 
 export class StoreMain extends React.Component {
   constructor(props) {
@@ -7,7 +6,7 @@ export class StoreMain extends React.Component {
     this.state = {};
   }
   render() {
-    return <div>로그인 되습니다.</div>;
+    return <div>로그인 되었습니다.</div>;
   }
 }
 

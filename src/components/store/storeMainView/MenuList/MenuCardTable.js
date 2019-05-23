@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MenuTab from "./MenuTab";
-import MenuList from "./MenuList";
-import { Input, Button, Card, Row, Col } from "reactstrap";
 
 export default class MenuCardTable extends Component {
   constructor(props) {
