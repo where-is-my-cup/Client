@@ -28,7 +28,6 @@ export default class IndexView extends Component {
   };
 
   _selectMenu = sendData => {
-    console.log(this.state.storeId);
     if (this.state.storeId === undefined) {
       swal({
         title: "매장을 선택하지 않으셨습니다.",
@@ -60,12 +59,14 @@ export default class IndexView extends Component {
     this.props.history.push({
       pathname: "/menuOrderList",
       storeId: this.state.storeId,
-      userId: this.state.userId
+      userId: this.state.userId,
+      nickname: this.props.location.nickname
     });
   };
   componentDidMount = async () => {
-    //var userId = this.props.location.userId;
+    var nickname = this.props.location.nickname;
     var userId = 2;
+    //var userId = this.props.location.userId;
     var storeId = this.props.location.storeId;
     var menuList = await getMenuList(storeId);
     var categorys = [];
@@ -100,9 +101,6 @@ export default class IndexView extends Component {
               this._search(e.target.value);
             }}
           />
-          {/*           <Button outline color="primary" className="IndexView ButtonSearch">
-            검
-          </Button> */}
           <Button
             outline
             color="primary"
