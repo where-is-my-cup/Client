@@ -10,18 +10,23 @@ export const getMenuList = storeId => {
   };
   return requestServer(url, "get", params);
 };
-export const sendOrderMenu = state => {
+export const sendOrderMenu = (state, history) => {
   /* 소켓으로 서버에게 주문 리스트 보내는 부분 */
   let url = localURL + "/menu/orderList";
 
   localStorage.setItem("orderList", "[]");
-  const { orderList, storeId, userId } = state;
+  const { orderList, storeId, userId, nickName } = state;
   let params = {
     orderList: orderList,
     storeId: storeId,
-    userId: userId
+    userId: userId,
+    nickName: localStorage.getItem("nickname")
   };
-  console.log(params);
+  history.push({
+    pathname: "/waitingView",
+    storeId: storeId,
+    userId: userId
+  });
   sock.user_order(params);
   return requestServer(url, "post", params);
 };
