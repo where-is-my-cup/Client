@@ -4,10 +4,7 @@ const sock = require("../../../socket");
 
 const localURL = secret.SERVER;
 export const getMenuList = storeId => {
-  let url =
-    storeId === undefined
-      ? localURL + "/menu/menulistAll"
-      : localURL + "/menu/menulist";
+  let url = storeId === undefined ? localURL + "/menu/menulistAll" : localURL + "/menu/menulist";
   let params = {
     storeId: storeId
   };

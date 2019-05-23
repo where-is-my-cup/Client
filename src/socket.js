@@ -6,13 +6,17 @@ socket.on("/storeLogin", function(data) {
   console.log("dididiididididididid");
 });
 
+socket.on("ordering", data => {
+  console.log("data -----", data);
+
+  socket.emit("waiting", {});
+});
+
 /* 매장 로그인 하는 부분 */
 export const storeLogin = param => {
-  socket.on("connect", () => {
-    socket.emit("storeLogin", {
-      storeId: param,
-      storeSocketId: socket.id
-    });
+
+  socket.emit("storeLogin", {
+    storeId: param
   });
 };
 
