@@ -1,5 +1,6 @@
 import axios from "axios";
 import secret from "../../../secret/secret";
+const sock = require("../../../socket");
 
 const localURL = secret.SERVER;
 export const getMenuList = storeId => {
@@ -23,6 +24,8 @@ export const sendOrderMenu = state => {
     storeId: storeId,
     userId: userId
   };
+  console.log(params);
+  sock.user_order(params);
   return requestServer(url, "post", params);
 };
 

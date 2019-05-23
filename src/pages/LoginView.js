@@ -36,7 +36,11 @@ export default class LoginView extends Component {
   };
 
   _auth = () => {
-    const data = { isID: this.state.id, isPW: this.state.pw, isAdmin: this.state.admin };
+    const data = {
+      isID: this.state.id,
+      isPW: this.state.pw,
+      isAdmin: this.state.admin
+    };
 
     axios.post("http://localhost:3001/user/login", data).then(({ data }) => {
       if (data.check) {
@@ -83,15 +87,26 @@ export default class LoginView extends Component {
           <Row id="login-bottenBox" className="login-input">
             <Col md="6" xs="4" sm="4">
               <Input type="checkbox" onChange={this._inputOnChange} />
-              <span style={{ color: "aliceblue", fontWeight: "bold" }}> Admin </span>
+              <span style={{ color: "aliceblue", fontWeight: "bold" }}>
+                {" "}
+                Admin{" "}
+              </span>
             </Col>
             <Col md="3" xs="4" sm="4">
-              <Button id="login-su" className="login-button" onClick={this._onClick}>
+              <Button
+                id="login-su"
+                className="login-button"
+                onClick={this._onClick}
+              >
                 SignUp
               </Button>
             </Col>
             <Col md="3" xs="4" sm="4">
-              <Button id="login-lg" className="login-button" onClick={this._onClick}>
+              <Button
+                id="login-lg"
+                className="login-button"
+                onClick={this._onClick}
+              >
                 Login
               </Button>
             </Col>

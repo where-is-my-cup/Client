@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import "../styles/signUp.css";
 import { InputGroup, Button } from "reactstrap";
-import { CheckCP, CheckID, CheckNN, CheckPW } from "../components/user/signUpView/index";
+import {
+  CheckCP,
+  CheckID,
+  CheckNN,
+  CheckPW
+} from "../components/user/signUpView/index";
 import Axios from "axios";
 import swal from "sweetalert";
 
@@ -71,7 +76,11 @@ export default class SignUp extends Component {
             <h1>SignUp</h1>
           </div>
 
-          <CheckID check={this._check} onChange={this._stateHandler} id={this.state.id} />
+          <CheckID
+            check={this._check}
+            onChange={this._stateHandler}
+            id={this.state.id}
+          />
           <CheckPW onChange={this._stateHandler} pw={this.state.pw} />
           <CheckCP check={this._check} pw={this.state.pw} />
           <CheckNN
@@ -82,7 +91,11 @@ export default class SignUp extends Component {
 
           <div id="signUp-buttonFam" className="signUp-inputFam">
             <InputGroup>
-              <Button onClick={this._onClick} id="signUp-add" className="signUp-inputButton">
+              <Button
+                onClick={this._onClick}
+                id="signUp-add"
+                className="signUp-inputButton"
+              >
                 가입하기
               </Button>
               <Button onClick={this._back} id="signUp-cancle">

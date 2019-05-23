@@ -28,9 +28,17 @@ export default class CheckNN extends Component {
   _toggle = data => {
     if (data) {
       this.props.check("nickname");
-      this.setState({ fadeIn: true, color: "green", coment: "사용 가능한 닉네임입니다." });
+      this.setState({
+        fadeIn: true,
+        color: "green",
+        coment: "사용 가능한 닉네임입니다."
+      });
     } else {
-      this.setState({ fadeIn: true, color: "red", coment: "중복된 닉네임입니다." });
+      this.setState({
+        fadeIn: true,
+        color: "red",
+        coment: "중복된 닉네임입니다."
+      });
     }
   };
   render() {
@@ -49,7 +57,11 @@ export default class CheckNN extends Component {
             중복확인
           </Button>
         </InputGroup>
-        <Fade in={this.state.fadeIn} className="mt-3" style={{ color: this.state.color }}>
+        <Fade
+          in={this.state.fadeIn}
+          className="mt-3"
+          style={{ color: this.state.color }}
+        >
           {this.state.coment}
         </Fade>
       </div>
