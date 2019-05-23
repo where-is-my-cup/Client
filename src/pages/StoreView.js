@@ -4,14 +4,19 @@ import StoreMain from "../components/store/storeMainView/StoreMain";
 import MenuCardTable from "../components/store/storeMainView/MenuList/MenuCardTable";
 import "../styles/StoreView.css";
 import { Tab, Row, Col, Nav } from "react-bootstrap";
+import { storeLogin } from "../socket";
 
 export class StoreView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      storeId: "1"
-    };
   }
+
+  componentDidMount = () => {
+    if (localStorage.storeId === "undefined") {
+      localStorage.storeId = this.props.location.storeId;
+    }
+    storeLogin(localStorage.storeId);
+  };
 
   render() {
     return (

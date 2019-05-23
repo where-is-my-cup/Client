@@ -1,12 +1,18 @@
 import { SERVER } from "./secret/secret";
-import socktio from "socket.io-client";
-var socket = socktio.connect(SERVER);
+import socketio from "socket.io-client";
+var socket = socketio.connect(SERVER);
+
+socket.on("/storeLogin", function(data) {
+  console.log("dididiididididididid");
+});
 
 /* 매장 로그인 하는 부분 */
 export const storeLogin = param => {
-  socket.emit("storeLogin", {
-    storeId: param.storeId,
-    storeSocketId: socket.id
+  socket.on("connect", () => {
+    socket.emit("storeLogin", {
+      storeId: param,
+      storeSocketId: socket.id
+    });
   });
 };
 
