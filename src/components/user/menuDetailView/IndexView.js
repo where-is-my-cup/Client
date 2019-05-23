@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Row, Col, Button } from "reactstrap";
+import {
+  Row,
+  Col,
+  Button,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 import "../../../styles/menuListView.css";
 import SelectOptional from "./SelectOptional";
 import swal from "sweetalert";
@@ -7,13 +15,13 @@ import swal from "sweetalert";
 export default class IndexView extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       selectMenu: "",
       kind: "ICE",
       size: "S",
-      count: 0,
-      storeId: undefined
+      count: "개수선택",
+      storeId: undefined,
+      dropdownOpen: false
     };
   }
   componentDidMount = () => {
@@ -64,7 +72,11 @@ export default class IndexView extends Component {
       orderList ? (orderList = JSON.parse(orderList)) : (orderList = []);
       var flag = true;
       for (var orderMenu of orderList) {
-        if (orderMenu.selectMenu.id === this.state.selectMenu.id) {
+        if (
+          orderMenu.selectMenu.id === this.state.selectMenu.id &&
+          orderMenu.size === this.state.size &&
+          orderMenu.kind === orderMenu.kind
+        ) {
           orderMenu.count =
             parseInt(orderMenu.count) + parseInt(this.state.count);
           flag = false;
@@ -82,9 +94,19 @@ export default class IndexView extends Component {
       storeId: this.state.storeId
     });
   };
+
+  _toggle = () => {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
+  };
   render() {
     let { imageURL } = this.state.selectMenu;
     const menuImageSize = 200;
+    let arr = [];
+    for (var i = 1; i <= 50; i++) {
+      arr.push(i);
+    }
     return (
       <div className="MenuDetail">
         <div className="MenuDetail-head">주문 상세메뉴</div>
@@ -129,12 +151,37 @@ export default class IndexView extends Component {
               </Col>
               <Col>
                 <div className="MenuDetail-selection">
-                  <input
+                  <Dropdown
+                    isOpen={this.state.dropdownOpen}
+                    toggle={this._toggle}
+                  >
+                    <DropdownToggle caret>{this.state.count}</DropdownToggle>
+                    <DropdownMenu>
+                      <div
+                        style={{
+                          height: "150px",
+                          overflowY: "scroll",
+                          borderRadius: "15px"
+                        }}
+                      >
+                        {arr.map(data => (
+                          <div
+                            onClick={() => {
+                              this.setState({ count: data });
+                            }}
+                          >
+                            <DropdownItem>{data}</DropdownItem>
+                          </div>
+                        ))}
+                      </div>
+                    </DropdownMenu>
+                  </Dropdown>
+                  {/*                   <input
                     type="number"
                     onChange={e => {
                       this._setCount(e.target.value);
                     }}
-                  />
+                  /> */}
                 </div>
               </Col>
             </Row>

@@ -4,13 +4,12 @@ import "../../../styles/menuListView.css";
 
 export default class StoreCard extends Component {
   render() {
-    var storeInfo = {};
+    var storeInfo = { storename: "", address: "" };
     var { store, showMaps } = this.props;
     storeInfo.storename =
-      store.stores !== undefined ? store.stores[0].storename : store.storename;
+      store.store !== undefined ? store.store.storename : store.storename;
     storeInfo.address =
-      store.stores !== undefined ? store.stores[0].address : store.address;
-
+      store.store !== undefined ? store.store.address : store.address;
     return (
       <div>
         <div

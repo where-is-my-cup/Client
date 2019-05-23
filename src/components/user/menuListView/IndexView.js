@@ -10,6 +10,7 @@ export default class IndexView extends Component {
     super(props);
     this.Timeout = undefined;
     this.state = {
+      userId: undefined,
       storeId: undefined,
       searchKeyword: "",
       categorys: [],
@@ -27,7 +28,8 @@ export default class IndexView extends Component {
   };
 
   _selectMenu = sendData => {
-    if (sendData.menus === undefined) {
+    console.log(this.state.storeId);
+    if (this.state.storeId === undefined) {
       swal({
         title: "매장을 선택하지 않으셨습니다.",
         text: "매장 선택화면으로 이동하시겠습니까?",
@@ -43,7 +45,7 @@ export default class IndexView extends Component {
         }
       });
     } else {
-      var menuInfo = sendData.menus[0];
+      var menuInfo = sendData;
       menuInfo.price = sendData.price;
       menuInfo.count = sendData.count;
       this.props.history.push({
@@ -56,20 +58,22 @@ export default class IndexView extends Component {
   _clickOrderPocket = () => {
     this.props.history.push({
       pathname: "/menuOrderList",
-      storeId: this.state.storeId
+      storeId: this.state.storeId,
+      userId: this.state.userId
     });
   };
   componentDidMount = async () => {
+    var userId = this.props.location.userId;
     var storeId = this.props.location.storeId;
     var menuList = await getMenuList(storeId);
     var categorys = [];
 
     menuList.data.forEach(element => {
       if (storeId !== undefined) {
-        element.category = element.menus[0].category;
-        element.menuname = element.menus[0].menuname;
-        element.imageURL = element.menus[0].imageURL;
-        element.description = element.menus[0].description;
+        element.category = element.category;
+        element.menuname = element.menuname;
+        element.imageURL = element.imageURL;
+        element.description = element.description;
       }
       if (!categorys.includes(element.category))
         categorys.push(element.category);
@@ -78,6 +82,7 @@ export default class IndexView extends Component {
     this.setState({
       categorys: categorys,
       menus: menuList.data,
+      userId: userId,
       storeId: storeId
     });
   };
@@ -119,7 +124,8 @@ export default class IndexView extends Component {
                 className="selectStoreBtn"
                 onClick={() => {
                   this.props.history.push({
-                    pathname: "/selectstore"
+                    pathname: "/selectstore",
+                    userId: this.state.userId
                   });
                 }}
               >
