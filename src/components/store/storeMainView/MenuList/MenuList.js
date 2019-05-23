@@ -59,6 +59,7 @@ export default class MenuList extends Component {
             <img
               src={require("../../../../image/" + selectMenu.image)}
               className="img-circle"
+              alt=""
               width={menuImageSize}
               height={menuImageSize}
             />
@@ -99,7 +100,12 @@ export default class MenuList extends Component {
             </div>
           </div>
 
-          <Button outline color="primary" className="menulist-save" onClick={this._changeSave}>
+          <Button
+            outline
+            color="primary"
+            className="menulist-save"
+            onClick={this._changeSave}
+          >
             설정
           </Button>
         </InputGroup>

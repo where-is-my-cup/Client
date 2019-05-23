@@ -20,6 +20,7 @@ export default class OrderMenuCard extends Component {
                       ? ""
                       : require("../../../image/" + imageURL)
                   }
+                  alt=""
                   width={menuImageSize}
                   height={menuImageSize}
                 />

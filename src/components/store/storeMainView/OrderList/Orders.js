@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Col } from "react-bootstrap";
+import React from "react";
 import "../../../../styles/Orders.css";
 import Order from "./Order";
 

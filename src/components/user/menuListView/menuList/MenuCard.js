@@ -20,6 +20,7 @@ export default class MenuCard extends Component {
                   className="img-circle"
                   width={menuImageSize}
                   height={menuImageSize}
+                  alt=""
                 />
               }
             </Col>

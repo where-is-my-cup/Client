@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import "../../../../styles/Order.css";
-import { Button, Card, Modal } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import OrderMenuList from "../OrderList/OrderMenuList";
 import swal from "sweetalert";
 
@@ -45,7 +45,10 @@ export class Order extends React.Component {
               {this.props.buttonText}
             </Button>
           </Card.Body>
-          <Card.Footer>00 : 00</Card.Footer>
+          <Card.Footer>
+            00 : 00
+            {/* <TimerExample /> */}
+          </Card.Footer>
         </Card>
       </div>
     );
