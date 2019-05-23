@@ -16,8 +16,8 @@ export const sendOrderMenu = state => {
   /* 소켓으로 서버에게 주문 리스트 보내는 부분 */
   let url = localURL + "/menu/orderList";
 
+  localStorage.setItem("orderList", "[]");
   const { orderList, storeId, userId } = state;
-  console.log(storeId);
   let params = {
     orderList: orderList,
     storeId: storeId,

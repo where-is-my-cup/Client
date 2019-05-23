@@ -14,9 +14,7 @@ export default class EmptyOrderList extends Component {
                   <Button
                     outline
                     color="primary"
-                    onClick={() => {
-                      this.props.backmenuListView();
-                    }}
+                    onClick={this.props.clickCancle}
                   >
                     취소
                   </Button>

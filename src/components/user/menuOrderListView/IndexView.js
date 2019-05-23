@@ -3,7 +3,6 @@ import { Row, Col, Button } from "reactstrap";
 import MenuCardTable from "../menuListView/menuList/MenuCardTable";
 import EmptyOrderList from "./EmptyOrderList";
 import { sendOrderMenu } from "../menuListView/getServerDate";
-import Confirm from "./Confirm";
 import swal from "sweetalert";
 
 export default class IndexView extends Component {
@@ -30,9 +29,6 @@ export default class IndexView extends Component {
     this.setState({
       orderList
     });
-  };
-  _backmenuListView = () => {
-    this.props.history.push("./menulist");
   };
   _orderMenu = () => {
     swal({
@@ -62,7 +58,7 @@ export default class IndexView extends Component {
       <div className="MenuDetail">
         <div className="MenuDetail-head">장바구니</div>
         {this.state.orderList.length === 0 ? (
-          <EmptyOrderList backmenuListView={this._backmenuListView} />
+          <EmptyOrderList clickCancle={this._clickCancle} />
         ) : (
           <div>
             <div className="MenuDetail-body">
