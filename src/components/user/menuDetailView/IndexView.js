@@ -54,7 +54,10 @@ export default class IndexView extends Component {
       this.state.size +
       " / " +
       this.state.count;
-
+    if (this.state.count === "개수선택") {
+      alert("개수를 선택해주세요");
+      return;
+    }
     var result = await swal({
       title: "해당 메뉴를 장바구니에 담으시겠습니까?",
       text: subMessage,
@@ -68,6 +71,7 @@ export default class IndexView extends Component {
         alert(`수량은 최대 ${this.state.selectMenu.count}개 까지 가능합니다.`);
         return;
       }
+
       var orderList = localStorage.getItem("orderList");
       orderList ? (orderList = JSON.parse(orderList)) : (orderList = []);
       var flag = true;
@@ -75,7 +79,7 @@ export default class IndexView extends Component {
         if (
           orderMenu.selectMenu.id === this.state.selectMenu.id &&
           orderMenu.size === this.state.size &&
-          orderMenu.kind === orderMenu.kind
+          orderMenu.kind === this.state.kind
         ) {
           orderMenu.count =
             parseInt(orderMenu.count) + parseInt(this.state.count);

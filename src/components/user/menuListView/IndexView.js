@@ -39,7 +39,8 @@ export default class IndexView extends Component {
       }).then(willDelete => {
         if (willDelete) {
           this.props.history.push({
-            pathname: "/selectstore"
+            pathname: "/selectstore",
+            userId: this.state.userId
           });
           return;
         }
@@ -63,7 +64,8 @@ export default class IndexView extends Component {
     });
   };
   componentDidMount = async () => {
-    var userId = this.props.location.userId;
+    //var userId = this.props.location.userId;
+    var userId = 2;
     var storeId = this.props.location.storeId;
     var menuList = await getMenuList(storeId);
     var categorys = [];
