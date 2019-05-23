@@ -45,6 +45,7 @@ export default class LoginView extends Component {
     axios.post("http://localhost:3001/user/login", data).then(({ data }) => {
       if (data.check) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("nickname", data.nickname);
         swal("Login!", `반가워요! ${data.nickname}님`, "success").then(() => {
           data.admin
             ? this.props.history.push({
@@ -53,7 +54,8 @@ export default class LoginView extends Component {
               })
             : this.props.history.push({
                 pathname: "/menuList",
-                userId: data.userId
+                userId: data.userId,
+                nickname: data.nickname
               });
         });
       } else {

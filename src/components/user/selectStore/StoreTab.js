@@ -78,11 +78,17 @@ export default class StoreTab extends Component {
             style={{ marginTop: "20px", border: "5px" }}
           >
             <TabPane tabId={"1"}>
-              <StoreCardTable
-                storeList={myStore}
-                selectStore={this.props.selectStore}
-                showMaps={this._showMaps}
-              />
+              {myStore.length === 0 ? (
+                <div style={{ paddingLeft: "20px" }}>
+                  현재 My 매장이 없습니다.
+                </div>
+              ) : (
+                <StoreCardTable
+                  storeList={myStore}
+                  selectStore={this.props.selectStore}
+                  showMaps={this._showMaps}
+                />
+              )}
             </TabPane>
             {
               <TabPane tabId={"2"}>

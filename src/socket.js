@@ -16,6 +16,8 @@ export const user_order = param => {
     orderList: param.orderList,
     userId: param.userId,
     storeId: param.storeId,
-    socketId: socket.id
+    user_socketId: socket.id
   });
 };
+
+export const sock = socket;
