@@ -25,9 +25,17 @@ export default class CheckID extends Component {
   _toggle = data => {
     if (!data) {
       this.props.check("id");
-      this.setState({ fadeIn: true, color: "green", coment: "사용 가능한 아이디입니다." });
+      this.setState({
+        fadeIn: true,
+        color: "green",
+        coment: "사용 가능한 아이디입니다."
+      });
     } else {
-      this.setState({ fadeIn: true, color: "red", coment: "중복된 아이디입니다." });
+      this.setState({
+        fadeIn: true,
+        color: "red",
+        coment: "중복된 아이디입니다."
+      });
     }
   };
 
@@ -45,7 +53,11 @@ export default class CheckID extends Component {
             중복확인
           </Button>
         </InputGroup>
-        <Fade in={this.state.fadeIn} className="mt-3" style={{ color: this.state.color }}>
+        <Fade
+          in={this.state.fadeIn}
+          className="mt-3"
+          style={{ color: this.state.color }}
+        >
           {this.state.coment}
         </Fade>
       </div>
