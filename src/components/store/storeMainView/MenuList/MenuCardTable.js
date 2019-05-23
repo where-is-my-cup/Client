@@ -6,8 +6,9 @@ export default class MenuCardTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tap: "카페인",
+      tap: "COFFEE",
       category: [],
+      data: [],
       selectData: []
     };
   }
@@ -24,45 +25,25 @@ export default class MenuCardTable extends Component {
     });
   };
 
-  _getCategory = () => {
-    var obj = {};
-    this.state.data.forEach(element => {
-      obj[element.category] = element.category;
-    });
-    obj = Object.keys(obj);
-    this.setState({
-      category: obj
-    });
-  };
-
   _getData = () => {
     axios
-      .post("http://localhost:3001/store/menuList", {
-        category: this.state.tap
-      })
+      .post(
+        "http://localhost:3001/store/menuList",
+        {
+          category: this.state.tap
+        },
+        { headers: { token: localStorage.token } }
+      )
       .then(result => {
-        var menus = [];
-        result.data.forEach(menu_store => {
-          let count = menu_store.count;
-          let price = menu_store.price;
-          let id = menu_store.id;
-          menu_store.menus.forEach(menu => {
-            menus.push({
-              id: id,
-              count: count,
-              price: price,
-              menuname: menu.menuname,
-              category: menu.category,
-              image: menu.imageURL
-            });
-          });
+        console.log(result.data);
+        var category = result.data.map(ele => {
+          return ele.category;
         });
+        category = [...new Set(category)];
         this.setState({
-          data: menus
+          category,
+          data: result.data
         });
-
-        this._selectTap();
-        this._getCategory();
       });
   };
 

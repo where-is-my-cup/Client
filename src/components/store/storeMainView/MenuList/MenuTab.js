@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import MenuList from "./MenuList";
-import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
+import { TabContent, Nav, TabPane, NavItem, NavLink } from "reactstrap";
 import "../../../../styles/MenuTab.css";
+
+import MenuList from "./MenuList";
 
 export default class MenuTab extends Component {
   constructor(props) {
@@ -49,7 +50,20 @@ export default class MenuTab extends Component {
               <MenuList selectMenu={menu} key={index} />
             ))}
           </TabPane>
+
           <TabPane tabId={"2"}>
+            {menus.map((menu, index) => (
+              <MenuList selectMenu={menu} key={index} />
+            ))}
+          </TabPane>
+
+          <TabPane tabId={"3"}>
+            {menus.map((menu, index) => (
+              <MenuList selectMenu={menu} key={index} />
+            ))}
+          </TabPane>
+
+          <TabPane tabId={"4"}>
             {menus.map((menu, index) => (
               <MenuList selectMenu={menu} key={index} />
             ))}

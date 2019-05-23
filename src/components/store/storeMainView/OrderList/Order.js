@@ -2,6 +2,7 @@ import React from "react";
 import "../../../../styles/Order.css";
 import { Button, Card } from "react-bootstrap";
 import OrderMenuList from "../OrderList/OrderMenuList";
+import TimerExample from "./timer";
 import swal from "sweetalert";
 
 export class Order extends React.Component {
@@ -46,8 +47,7 @@ export class Order extends React.Component {
             </Button>
           </Card.Body>
           <Card.Footer>
-            00 : 00
-            {/* <TimerExample /> */}
+            <TimerExample />
           </Card.Footer>
         </Card>
       </div>

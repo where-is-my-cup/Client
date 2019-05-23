@@ -51,17 +51,15 @@ export default class MenuList extends Component {
 
   render() {
     const { selectMenu } = this.props;
-    const menuImageSize = 80;
     return (
-      <div>
+      <div style={{ backgroundColor: "#F2F4F4" }}>
         <InputGroup className="store-input-group">
-          <div className="input-unit">
+          <div id="input-image" className="input-unit">
             <img
-              src={require("../../../../image/" + selectMenu.image)}
-              className="img-circle"
+              src={require("../../../../image/" + selectMenu.imageURL)}
               alt=""
-              width={menuImageSize}
-              height={menuImageSize}
+              width={100}
+              height={100}
             />
           </div>
 
