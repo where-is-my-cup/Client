@@ -28,7 +28,8 @@ export default class IndexView extends Component {
   };
 
   _selectMenu = sendData => {
-    if (sendData.menus === undefined) {
+    console.log(this.state.storeId);
+    if (this.state.storeId === undefined) {
       swal({
         title: "매장을 선택하지 않으셨습니다.",
         text: "매장 선택화면으로 이동하시겠습니까?",
@@ -44,7 +45,7 @@ export default class IndexView extends Component {
         }
       });
     } else {
-      var menuInfo = sendData.menus[0];
+      var menuInfo = sendData;
       menuInfo.price = sendData.price;
       menuInfo.count = sendData.count;
       this.props.history.push({
