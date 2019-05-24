@@ -11,8 +11,8 @@ export default class MenuCard extends Component {
           this.props.selectMenu(this.props.menu);
         }}
       >
-        <Card body className="Card">
-          <Row>
+        <Card body className="Card menu-taps">
+          <Row id="cardBox">
             <Col sm="3">
               {
                 <img
@@ -24,12 +24,14 @@ export default class MenuCard extends Component {
                 />
               }
             </Col>
-            <Col sm="6">
-              <h2>{this.props.menu.menuname}</h2>
-              {this.props.menu.description}
+            <Col sm="6" className="menuCard-menuUnit">
+              <div id="menuCard-menuName">
+                <h2>{this.props.menu.menuname}</h2>
+                {this.props.menu.description}
+              </div>
             </Col>
             {this.props.menu.price !== undefined ? (
-              <Col>
+              <Col className="menuCard-menuUnit">
                 <CardText>₩ {this.props.menu.price}</CardText>
                 <CardText>개수 : {this.props.menu.count}</CardText>
               </Col>

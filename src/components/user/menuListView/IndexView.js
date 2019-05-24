@@ -78,8 +78,7 @@ export default class IndexView extends Component {
         element.imageURL = element.imageURL;
         element.description = element.description;
       }
-      if (!categorys.includes(element.category))
-        categorys.push(element.category);
+      if (!categorys.includes(element.category)) categorys.push(element.category);
     });
 
     this.setState({
@@ -103,11 +102,11 @@ export default class IndexView extends Component {
           />
           <Button
             outline
-            color="primary"
+            color="secondary"
             className="IndexView ButtonPocket"
             onClick={this._clickOrderPocket}
           >
-            장
+            <div id="shopping" />
           </Button>
         </div>
         <div className="IndexView-body">

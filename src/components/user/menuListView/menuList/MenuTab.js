@@ -21,15 +21,11 @@ export default class MenuTab extends Component {
 
     return (
       <div>
-        <div
-          style={
-            searchKeyword === "" ? { display: "inline" } : { display: "none" }
-          }
-        >
+        <div style={searchKeyword === "" ? { display: "inline" } : { display: "none" }}>
           {/* 상위 카테고리 탭을 선택하는 부분 케익, 음료 등등 */}
           <Nav tabs>
             {categorys.map((category, index) => (
-              <NavItem key={index}>
+              <NavItem key={index} className="menu-taps">
                 <NavLink
                   onClick={() => {
                     index++;
@@ -64,11 +60,7 @@ export default class MenuTab extends Component {
             </div>
           )}
         </div>
-        <div
-          style={
-            searchKeyword === "" ? { display: "none" } : { display: "inline" }
-          }
-        >
+        <div style={searchKeyword === "" ? { display: "none" } : { display: "inline" }}>
           <h4 style={{ marginLeft: "10px", marginTop: "20px", border: "5px" }}>
             '{searchKeyword}'로 검색한 결과
           </h4>

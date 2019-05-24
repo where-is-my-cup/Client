@@ -1,6 +1,8 @@
 /* Menu List view */
 .IndexView {
-  margin: 0 2px;
+  margin-left: 10px;
+  width: 45px;
+  padding: 0.1rem 0.2rem !important;
 }
 .IndexView-head {
   display: flex;
@@ -37,8 +39,7 @@
   width: 0px;
   margin: 0 auto;
 }
-.MenuDetail-foot {
-}
+
 .Card:hover {
   background-color: rgb(238, 238, 238);
   cursor: pointer;
@@ -52,4 +53,57 @@
 .selectStoreBtn:hover {
   background-color: rgb(0, 140, 255);
   color: white;
+}
+
+#shopping {
+  background-image: url("../../src/image/shoppingCart.png");
+  width: 100%;
+  height: 4ex;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#cardBox {
+  text-align: center;
+  /* border: 1px solid red; */
+}
+
+.menuCard-menuUnit {
+  margin: auto !important;
+}
+
+.menu-taps {
+  margin-right: 10px;
+  letter-spacing: 0;
+  -webkit-transition: all 0.28s ease-in-out;
+  transition: all 0.28s ease-in-out;
+  cursor: pointer;
+}
+.menu-taps:hover,
+.menu-taps:focus,
+.menu-taps:active {
+  letter-spacing: 5px;
+}
+.menu-taps:after,
+.menu-taps:before {
+  border: 1px solid rgba(255, 255, 255, 0);
+  bottom: 0;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  -webkit-transition: all 0.28s ease-in-out;
+  transition: all 0.28s ease-in-out;
+  width: 0;
+}
+.menu-taps:hover:after,
+.menu-taps:hover:before {
+  border-color: #fff;
+  -webkit-transition: width 350ms ease-in-out;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+.menu-taps:hover:before {
+  bottom: auto;
+  top: 0;
 }
