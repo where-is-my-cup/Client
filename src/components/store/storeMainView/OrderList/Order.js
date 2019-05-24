@@ -25,8 +25,8 @@ export class Order extends React.Component {
         dangerMode: false
       });
       if (temp) {
-        await swal("알림이 전달되었습니다.", { icon: "success" });
         this.props.addCompleted(this.props.order.orderNumber);
+        await swal("알림이 전달되었습니다.", { icon: "success" });
       }
     }
   };

@@ -5,7 +5,7 @@ export class OrderMenuList extends React.Component {
     const { list } = this.props;
     return (
       <div>
-        <span className="list-name">{list.menuName} </span>
+        <span className="list-name">{list.menuName}</span>
         <span className="list-details">
           {list.hotIce} / {list.size} / {list.count}
         </span>
