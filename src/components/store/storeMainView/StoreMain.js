@@ -1,4 +1,5 @@
 import React from "react";
+import Clock from "./Clock";
 
 export class StoreMain extends React.Component {
   constructor(props) {
@@ -6,7 +7,11 @@ export class StoreMain extends React.Component {
     this.state = {};
   }
   render() {
-    return <div>로그인 되었습니다.</div>;
+    return (
+      <div className="clock-form">
+        <Clock />
+      </div>
+    );
   }
 }
 

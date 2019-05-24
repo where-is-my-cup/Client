@@ -11,7 +11,7 @@ export class Orders extends React.Component {
       orderList: [
         {
           orderNumber: "1",
-          NickName: "방이동불주먹",
+          nickName: "방이동불주먹",
           orderList: [
             {
               menuName: "아메리카노",
@@ -39,7 +39,7 @@ export class Orders extends React.Component {
         },
         {
           orderNumber: "2",
-          NickName: "오태식",
+          nickName: "오태식",
           orderList: [
             {
               menuName: "그린티라떼",
@@ -60,7 +60,7 @@ export class Orders extends React.Component {
         },
         {
           orderNumber: "3",
-          NickName: "사팔팔오",
+          nickName: "사팔팔오",
           orderList: [
             {
               menuName: "토피넛라떼",
@@ -74,7 +74,7 @@ export class Orders extends React.Component {
         },
         {
           orderNumber: "4",
-          NickName: "이중구",
+          nickName: "이중구",
           orderList: [
             {
               menuName: "자몽에이드",
@@ -88,7 +88,7 @@ export class Orders extends React.Component {
         },
         {
           orderNumber: "5",
-          NickName: "이중구2",
+          nickName: "이중구2",
           orderList: [
             {
               menuName: "자몽에이드",

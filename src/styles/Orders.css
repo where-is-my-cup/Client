@@ -1,5 +1,10 @@
 .orderBoard {
   display: flex;
   flex-flow: row wrap;
-  margin-left: 50px;
+  height: 800px;
+  padding-left: 45px;
+  padding-top: 50px;
+  overflow-x: hidden;
+  background-color: rgba(228, 233, 237, 1);
+  border-radius: 10px;
 }

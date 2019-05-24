@@ -35,14 +35,17 @@ export default class MenuCardTable extends Component {
         { headers: { token: localStorage.token } }
       )
       .then(result => {
-        console.log(result.data);
         var category = result.data.map(ele => {
           return ele.category;
         });
         category = [...new Set(category)];
+        var coffee = result.data.filter(ele => {
+          return ele.category === this.state.tap;
+        });
         this.setState({
           category,
-          data: result.data
+          data: result.data,
+          selectData: coffee
         });
       });
   };

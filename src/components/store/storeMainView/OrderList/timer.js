@@ -35,6 +35,9 @@ class Timer extends React.Component {
 
   countUp() {
     let seconds = this.state.seconds + 1;
+    if (seconds === 10 || seconds === 20) {
+      this.props.setColor(seconds);
+    }
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds
