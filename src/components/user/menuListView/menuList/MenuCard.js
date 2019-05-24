@@ -5,6 +5,7 @@ import "../../../../styles/menuListView.css";
 export default class MenuCard extends Component {
   render() {
     const menuImageSize = 80;
+    const soldOut = this.props.menu.count === 0;
     return (
       <div
         onClick={() => {
