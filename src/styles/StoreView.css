@@ -19,6 +19,7 @@
 .col-9 {
   padding: 0px !important;
   height: 800px;
-  background-color: rgba(228, 233, 237, 1);
+  background-color: white;
+  border: 3px solid black;
   border-radius: 10px;
 }
