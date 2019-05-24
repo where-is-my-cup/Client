@@ -21,6 +21,7 @@ export const converter = function(obj) {
   convertedObj.nickName = obj.nickName;
   convertedObj.orderList = orderList;
   convertedObj.totalPrice = totalPrice;
+  convertedObj.user_socketId = obj.user_socketId;
 
   return convertedObj;
 };

@@ -12,9 +12,7 @@ export class StoreView extends React.Component {
   }
 
   componentDidMount = () => {
-    if (localStorage.storeId === "undefined") {
-      localStorage.storeId = this.props.location.storeId;
-    }
+    localStorage.storeId = this.props.location.storeId;
     storeLogin(localStorage.storeId);
   };
 

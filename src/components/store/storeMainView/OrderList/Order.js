@@ -18,8 +18,8 @@ export class Order extends React.Component {
         dangerMode: false
       });
       if (temp) {
-        await swal("알림이 전달되었습니다.", { icon: "success" });
         this.props.addCompleted(this.props.order.orderNumber);
+        await swal("알림이 전달되었습니다.", { icon: "success" });
       }
     }
   };
@@ -34,7 +34,7 @@ export class Order extends React.Component {
           style={{ width: "18rem" }}
         >
           <Card.Header>
-            {order.orderNumber}.{order.NickName}
+            {order.orderNumber}.{order.nickName}
           </Card.Header>
           <Card.Body>
             <div className="order-card-line">

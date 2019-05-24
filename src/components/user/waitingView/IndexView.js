@@ -8,7 +8,7 @@ export default class IndexView extends Component {
     super(props);
     this.socket = undefined;
     this.state = {
-      waiting: 0,
+      waitingNames: [],
       storeId: "11"
     };
   }
@@ -16,26 +16,23 @@ export default class IndexView extends Component {
     this.socket = socktio.connect(SERVER);
     var bind = this;
     socket.sock.on("waiting", function(data) {
-      this.setState({
-        waiting: data.waiting
+      bind.setState({
+        waitingNames: data
       });
     });
 
     socket.sock.on("completedOrder", function(data) {
       swal(
         "주문 완료",
-        `${data.nickname}님, 주문이 완료되었습니다.`,
+        `${localStorage.nickname}님, 주문이 완료되었습니다.`,
         "success"
       ).then(() => {
-        bind.setState({
-          waiting: data.waiting
-        });
+        socket.sock.emit("leaveRoom", bind.state.storeId);
         bind.props.history.push({
           pathname: "/menuList",
           storeId: bind.props.location.storeId,
           userId: bind.props.location.userId
         });
-        socket.sock.emit("leaveRoom", bind.state.storeId);
       });
     });
     this.setState({
@@ -44,6 +41,8 @@ export default class IndexView extends Component {
   }
 
   render() {
+    var name = localStorage.nickname;
+    var number = this.state.waitingNames.indexOf(name) + 1;
     return (
       <div>
         <div
@@ -60,7 +59,7 @@ export default class IndexView extends Component {
           }}
         >
           {" "}
-          현재 {this.state.waiting}번째로 준비 중입니다.
+          현재 {number}번째로 준비 중입니다.
         </div>
       </div>
     );
