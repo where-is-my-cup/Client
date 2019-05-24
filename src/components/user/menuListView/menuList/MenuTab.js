@@ -76,6 +76,7 @@ export default class MenuTab extends Component {
             menuList={menus.filter(menu => {
               return menu.menuname.includes(searchKeyword);
             })}
+            selectMenu={this.props.selectMenu}
           />
         </div>
       </div>
