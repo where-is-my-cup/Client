@@ -1,0 +1,40 @@
+.clock-form {
+  margin-top: 120px;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto Mono, Arial, sans-serif;
+  text-align: center;
+  color: rgb(50, 55, 61);
+  border-radius: 10px;
+  user-select: none;
+}
+
+#date,
+#hours,
+#minutes,
+#seconds {
+  margin: 10px;
+  text-shadow: 0rem 0rem 1rem rgba(255, 255, 255, 0.7),
+    0rem 0rem 2rem rgba(255, 255, 255, 0.3);
+  font-family: "Times New Roman", Times, serif;
+}
+#hours,
+#minutes,
+#seconds {
+  display: inline-block;
+}
+
+#date {
+  font-size: 30px;
+}
+
+#hours,
+#minutes {
+  font-size: 60px;
+  font-weight: 300;
+}
+
+#seconds {
+  font-size: 60px;
+  font-weight: 100;
+}

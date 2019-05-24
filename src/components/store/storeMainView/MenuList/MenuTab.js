@@ -26,6 +26,7 @@ export default class MenuTab extends Component {
         <Nav tabs>
           {tapList.map((category, index) => (
             <NavItem
+              className="menu-taps"
               key={index}
               onClick={() => {
                 clickTap(category);

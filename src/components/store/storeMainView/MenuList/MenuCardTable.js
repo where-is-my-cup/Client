@@ -39,9 +39,13 @@ export default class MenuCardTable extends Component {
           return ele.category;
         });
         category = [...new Set(category)];
+        var coffee = result.data.filter(ele => {
+          return ele.category === this.state.tap;
+        });
         this.setState({
           category,
-          data: result.data
+          data: result.data,
+          selectData: coffee
         });
       });
   };

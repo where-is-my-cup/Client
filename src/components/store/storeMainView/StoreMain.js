@@ -1,4 +1,6 @@
 import React from "react";
+import Clock from "./Clock";
+import "../../../styles/storeMain.css";
 
 export class StoreMain extends React.Component {
   constructor(props) {
@@ -6,7 +8,15 @@ export class StoreMain extends React.Component {
     this.state = {};
   }
   render() {
-    return <div>로그인 되었습니다.</div>;
+    return (
+      <div>
+        <div className="back-image" />
+        <div className="clock-form">
+          <Clock />
+          <h1 id="admin-title">WELCOME TO ADMIN</h1>
+        </div>
+      </div>
+    );
   }
 }
 

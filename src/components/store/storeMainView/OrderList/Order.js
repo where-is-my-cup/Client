@@ -6,6 +6,13 @@ import TimerExample from "./timer";
 import swal from "sweetalert";
 
 export class Order extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      borderColor: "primary"
+    };
+  }
+
   _handleOrder = async () => {
     if (this.props.variant === "success") {
       this.props.deleteCompleted(this.props.order.orderNumber);
@@ -24,13 +31,19 @@ export class Order extends React.Component {
     }
   };
 
+  _setColor = time => {
+    this.setState({
+      borderColor: time === 10 ? "warning" : "danger"
+    });
+  };
+
   render() {
     const { order } = this.props;
     return (
       <div>
         <Card
           className="order-card"
-          border="primary"
+          border={this.state.borderColor}
           style={{ width: "18rem" }}
         >
           <Card.Header>
@@ -47,7 +60,7 @@ export class Order extends React.Component {
             </Button>
           </Card.Body>
           <Card.Footer>
-            <TimerExample />
+            <TimerExample setColor={this._setColor} />
           </Card.Footer>
         </Card>
       </div>

@@ -36,7 +36,7 @@ export class StoreView extends React.Component {
               </Nav>
             </Col>
             <Col sm={9} className="col-9">
-              <Tab.Content>
+              <Tab.Content className="top-image">
                 <Tab.Pane eventKey="init">
                   <StoreMain />
                 </Tab.Pane>
