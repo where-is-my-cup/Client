@@ -17,7 +17,11 @@ export default class MenuCardTable extends Component {
             key={index}
           >
             {changeOrderList === undefined ? (
-              <MenuCard menu={data} selectMenu={this.props.selectMenu} />
+              <MenuCard
+                menu={data}
+                selectMenu={this.props.selectMenu}
+                category={this.props.category}
+              />
             ) : (
               <OrderMenuCard
                 menu={data}
