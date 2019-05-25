@@ -48,7 +48,8 @@ export default class IndexView extends Component {
   _clickCancle = () => {
     this.props.history.push({
       pathname: "/menuList",
-      storeId: this.state.storeId
+      storeId: this.state.storeId,
+      userId: this.state.userId
     });
   };
   render() {
