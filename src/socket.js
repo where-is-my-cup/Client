@@ -5,23 +5,17 @@ import { converter } from "./components/store/storeMainView/OrderList/converter"
 var socket = socketio.connect(SERVER);
 
 /* 현재 매장 로그인 중인지 확인 */
-export const checkStore = storeId => {
-  console.log(storeId);
-  socket.emit("checkStore", { storeId: storeId });
+export const checkStore = () => {
+  socket.emit("checkStore", {});
 };
-
-export const GoStore = bind => {
-  socket.on("GoStore", function(data) {
-    console.log(data);
-    if (data.flag) {
-      bind.props.history.push({
-        pathname: "/menulist",
-        storeId: data.storeId,
-        userId: bind.state.userId
-      });
-    } else {
-      alert("현재 매장이 로그인 되지 않았습니다.");
-    }
+export const GoStore = (bind, storeList, storeListAll) => {
+  socket.on("loginStore", function(data) {
+    bind.setState({
+      myStore: storeList.data,
+      totalStore: storeListAll.data,
+      userId: bind.props.location.userId,
+      loginStore: data.stores
+    });
   });
 };
 

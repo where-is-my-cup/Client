@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Button, Input } from "reactstrap";
 import { getStoerList, getStoreListAll } from "../menuListView/getServerDate";
 import StoreTab from "./StoreTab";
+import swal from "sweetalert";
+
 const sock = require("../../../socket");
 
 export default class IndexView extends Component {
@@ -19,7 +21,8 @@ export default class IndexView extends Component {
           address: "test주소",
           Tel: "224-4242-123"
         }
-      ]
+      ],
+      loginStore: {}
     };
   }
   componentDidMount = async () => {
@@ -31,10 +34,26 @@ export default class IndexView extends Component {
       totalStore: storeListAll.data,
       userId: this.props.location.userId
     });
-    sock.GoStore(this);
+    sock.checkStore();
+    sock.GoStore(this, storeList, storeListAll);
   };
   _selectStore = storeId => {
-    sock.checkStore(storeId);
+    for (var key in this.state.loginStore) {
+      if (key + "" === storeId + "") {
+        this.props.history.push({
+          pathname: "/menulist",
+          storeId: storeId,
+          userId: this.state.userId
+        });
+        return;
+      }
+    }
+    swal({
+      title: "죄송합니다. 다른 매장을 선택하여 주십시오.",
+      text: "해당 매장이 로그오프 상태입니다.",
+      icon: "warning",
+      dangerMode: false
+    });
   };
   _search = keyword => {
     if (this.Timeout !== undefined) clearTimeout(this.Timeout);

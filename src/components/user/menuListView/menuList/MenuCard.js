@@ -11,6 +11,7 @@ export default class MenuCard extends Component {
         onClick={() => {
           this.props.selectMenu(this.props.menu, this.props.category);
         }}
+        style={soldOut ? { pointerEvents: "none", opacity: "0.4" } : {}}
       >
         <Card body className="Card menu-taps">
           <Row id="cardBox">
