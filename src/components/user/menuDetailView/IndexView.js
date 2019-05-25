@@ -21,13 +21,23 @@ export default class IndexView extends Component {
       size: "S",
       count: "개수선택",
       storeId: undefined,
-      dropdownOpen: false
+      dropdownOpen: false,
+      category: ""
     };
   }
   componentDidMount = () => {
+    var kind =
+      this.props.location.state.category === "JUICE" ||
+      this.props.location.state.category === "DESSERT"
+        ? "-"
+        : "ICE";
+    var size = this.props.location.state.category === "DESSERT" ? "-" : "S";
     this.setState({
       selectMenu: this.props.location.state,
-      storeId: this.props.location.storeId
+      storeId: this.props.location.storeId,
+      category: this.props.location.state.category,
+      kind: kind,
+      size: size
     });
   };
   _setKind = value => {
@@ -140,7 +150,12 @@ export default class IndexView extends Component {
               <Col>
                 <div className="MenuDetail-selection">
                   <SelectOptional
-                    data={["ICE", "HOT"]}
+                    data={
+                      this.state.category === "JUICE" ||
+                      this.state.category === "DESSERT"
+                        ? []
+                        : ["ICE", "HOT"]
+                    }
                     setKind={this._setKind}
                   />
                 </div>
@@ -148,7 +163,9 @@ export default class IndexView extends Component {
               <Col>
                 <div className="MenuDetail-selection">
                   <SelectOptional
-                    data={["S", "M", "L"]}
+                    data={
+                      this.state.category === "DESSERT" ? [] : ["S", "M", "L"]
+                    }
                     setSize={this._setSize}
                   />
                 </div>

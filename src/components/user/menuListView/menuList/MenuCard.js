@@ -9,7 +9,7 @@ export default class MenuCard extends Component {
     return (
       <div
         onClick={() => {
-          this.props.selectMenu(this.props.menu);
+          this.props.selectMenu(this.props.menu, this.props.category);
         }}
       >
         <Card body className="Card menu-taps">

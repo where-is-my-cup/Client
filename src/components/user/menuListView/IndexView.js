@@ -67,6 +67,7 @@ export default class IndexView extends Component {
     var nickname = this.props.location.nickname;
     var userId = 2;
     //var userId = this.props.location.userId;
+    console.log(userId);
     var storeId = this.props.location.storeId;
     var menuList = await getMenuList(storeId);
     var categorys = [];
@@ -78,7 +79,8 @@ export default class IndexView extends Component {
         element.imageURL = element.imageURL;
         element.description = element.description;
       }
-      if (!categorys.includes(element.category)) categorys.push(element.category);
+      if (!categorys.includes(element.category))
+        categorys.push(element.category);
     });
 
     this.setState({

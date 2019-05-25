@@ -19,9 +19,13 @@ export class Orders extends React.Component {
       if (val.orderNumber === orderNumber) {
         order = val;
       } else {
+        console.log(this.state.completedIndex);
+        console.log(orderNumber);
+        if (this.state.completedIndex.includes(orderNumber)) break;
         names.push(val.nickName);
       }
     }
+
     socket.completedOrder(order, names);
     this.setState({
       completedIndex: [...this.state.completedIndex, orderNumber]

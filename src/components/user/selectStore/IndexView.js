@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Input } from "reactstrap";
 import { getStoerList, getStoreListAll } from "../menuListView/getServerDate";
 import StoreTab from "./StoreTab";
+const sock = require("../../../socket");
 
 export default class IndexView extends Component {
   constructor(props) {
@@ -30,13 +31,10 @@ export default class IndexView extends Component {
       totalStore: storeListAll.data,
       userId: this.props.location.userId
     });
+    sock.GoStore(this);
   };
   _selectStore = storeId => {
-    this.props.history.push({
-      pathname: "/menulist",
-      storeId: storeId,
-      userId: this.state.userId
-    });
+    sock.checkStore(storeId);
   };
   _search = keyword => {
     if (this.Timeout !== undefined) clearTimeout(this.Timeout);
