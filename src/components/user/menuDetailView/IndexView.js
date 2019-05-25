@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Row,
-  Col,
-  Button,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import { Row, Col, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import "../../../styles/menuListView.css";
 import SelectOptional from "./SelectOptional";
 import swal from "sweetalert";
@@ -93,8 +85,7 @@ export default class IndexView extends Component {
           orderMenu.size === this.state.size &&
           orderMenu.kind === this.state.kind
         ) {
-          orderMenu.count =
-            parseInt(orderMenu.count) + parseInt(this.state.count);
+          orderMenu.count = parseInt(orderMenu.count) + parseInt(this.state.count);
           flag = false;
           break;
         }
@@ -126,36 +117,33 @@ export default class IndexView extends Component {
     }
     return (
       <div className="MenuDetail">
-        <div className="MenuDetail-head">주문 상세메뉴</div>
+        <Row className="MenuDetail-head">주문 상세메뉴</Row>
+
         <div className="MenuDetail-body">
-          <div className="MenuDetail-menuInfo">
-            {
-              <img
-                src={
-                  imageURL === undefined
-                    ? ""
-                    : require("../../../image/" + imageURL)
-                }
-                width={menuImageSize}
-                height={menuImageSize}
-              />
-            }
-            <div className="MenuDetail-textInfo">
+          <Row>
+            <Col xs="6" className="MenuDetail-menuInfo">
+              {
+                <img
+                  src={imageURL === undefined ? "" : require("../../../image/" + imageURL)}
+                  width={menuImageSize}
+                  height={menuImageSize}
+                />
+              }
+            </Col>
+            <Col xs="6" className="MenuDetail-textInfo">
               <h1>{this.state.selectMenu.menuname}</h1>
-              <h5 style={{ marginTop: "50px" }}>
-                {this.state.selectMenu.description}
-              </h5>
+              <h5 style={{ marginTop: "50px" }}>{this.state.selectMenu.description}</h5>
               가격 : {this.state.selectMenu.price}원
-            </div>
-          </div>
+            </Col>
+          </Row>
+
           <div className="MenuDetail-select">
-            <Row>
+            <Row id="MenuDetail-selectBox">
               <Col>
                 <div className="MenuDetail-selection">
                   <SelectOptional
                     data={
-                      this.state.category === "JUICE" ||
-                      this.state.category === "DESSERT"
+                      this.state.category === "JUICE" || this.state.category === "DESSERT"
                         ? []
                         : ["ICE", "HOT"]
                     }
@@ -166,19 +154,14 @@ export default class IndexView extends Component {
               <Col>
                 <div className="MenuDetail-selection">
                   <SelectOptional
-                    data={
-                      this.state.category === "DESSERT" ? [] : ["S", "M", "L"]
-                    }
+                    data={this.state.category === "DESSERT" ? [] : ["S", "M", "L"]}
                     setSize={this._setSize}
                   />
                 </div>
               </Col>
               <Col>
                 <div className="MenuDetail-selection">
-                  <Dropdown
-                    isOpen={this.state.dropdownOpen}
-                    toggle={this._toggle}
-                  >
+                  <Dropdown isOpen={this.state.dropdownOpen} toggle={this._toggle}>
                     <DropdownToggle caret>{this.state.count}</DropdownToggle>
                     <DropdownMenu>
                       <div
@@ -211,21 +194,22 @@ export default class IndexView extends Component {
             </Row>
           </div>
         </div>
+
         <div className="MenuDetail-foot">
           <Row>
-            <Col sm="12" md={{ size: 6, offset: 5 }}>
-              <div style={{ display: "flex", margin: "30px" }}>
-                <div style={{ padding: "30px" }}>
-                  <Button outline color="primary" onClick={this._addOrderList}>
-                    확인
-                  </Button>
-                </div>
-                <div style={{ padding: "30px" }}>
-                  <Button outline color="primary" onClick={this._clickCancle}>
-                    취소
-                  </Button>
-                </div>
-              </div>
+            <Col xs="6" className="MenuDetail-footItem" />
+            <Col xs="6" className="MenuDetail-footItem">
+              <Button outline color="primary" onClick={this._addOrderList}>
+                확인
+              </Button>
+              <Button
+                style={{ marginLeft: "10%" }}
+                outline
+                color="primary"
+                onClick={this._clickCancle}
+              >
+                취소
+              </Button>
             </Col>
           </Row>
         </div>

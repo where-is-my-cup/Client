@@ -22,22 +22,38 @@
 
 /* Menu Detail View */
 .MenuDetail {
+  height: 700px;
   margin: 0 20px;
 }
+
 .MenuDetail-head {
-  padding: 20px;
+  padding: 10% 10% 0 10%;
   font-size: 30px;
 }
-.MenuDetail-menuInfo {
-  display: flex;
-  margin: 50px;
+
+.MenuDetail-body {
+  margin-top: 10%;
 }
-.MenuDetail-textInfo {
-  padding: 0 300px;
+
+.MenuDetail-select {
+  margin-top: 10%;
 }
+
 .MenuDetail-selection {
-  width: 0px;
-  margin: 0 auto;
+  text-align: center;
+}
+
+#MenuDetail-selectBox {
+  margin: auto !important;
+}
+
+.MenuDetail-foot {
+  margin-top: 10%;
+  padding-right: 7%;
+}
+
+.MenuDetail-footItem {
+  text-align: right;
 }
 
 .Card:hover {
