@@ -51,7 +51,8 @@ export default class IndexView extends Component {
       this.props.history.push({
         pathname: "/menuDetail",
         state: menuInfo,
-        storeId: this.state.storeId
+        storeId: this.state.storeId,
+        userId: this.state.userId
       });
     }
   };
@@ -69,7 +70,6 @@ export default class IndexView extends Component {
     var storeId = this.props.location.storeId;
     var menuList = await getMenuList(storeId);
     var categorys = [];
-
     menuList.data.forEach(element => {
       if (storeId !== undefined) {
         element.category = element.category;

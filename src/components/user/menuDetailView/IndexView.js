@@ -21,6 +21,7 @@ export default class IndexView extends Component {
       size: "S",
       count: "개수선택",
       storeId: undefined,
+      userId: undefined,
       dropdownOpen: false,
       category: ""
     };
@@ -35,6 +36,7 @@ export default class IndexView extends Component {
     this.setState({
       selectMenu: this.props.location.state,
       storeId: this.props.location.storeId,
+      userId: this.props.location.userId,
       category: this.props.location.state.category,
       kind: kind,
       size: size
@@ -105,7 +107,8 @@ export default class IndexView extends Component {
   _clickCancle = () => {
     this.props.history.push({
       pathname: "/menuList",
-      storeId: this.state.storeId
+      storeId: this.state.storeId,
+      userId: this.state.userId
     });
   };
 
