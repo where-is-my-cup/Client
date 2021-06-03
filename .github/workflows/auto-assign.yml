@@ -3,7 +3,7 @@ name: "Auto Assign"
 on:
   pull_request:
     branches:
-      - master
+      - dev
 
 jobs:
   assign:
