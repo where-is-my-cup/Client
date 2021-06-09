@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - feature/*
+      - test11
 
 jobs:
   assign:
