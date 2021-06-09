@@ -3,14 +3,14 @@ import "../styles/login.css";
 import { Row, Col, Input, Button } from "reactstrap";
 import axios from "axios";
 import swal from "sweetalert";
-
+console.log(1);
 export default class LoginView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: "",
       pw: "",
-      admin: false
+      admin: false,
     };
   }
 
@@ -39,7 +39,7 @@ export default class LoginView extends Component {
     const data = {
       isID: this.state.id,
       isPW: this.state.pw,
-      isAdmin: this.state.admin
+      isAdmin: this.state.admin,
     };
 
     axios.post("http://localhost:3001/user/login", data).then(({ data }) => {
@@ -50,12 +50,12 @@ export default class LoginView extends Component {
           data.admin
             ? this.props.history.push({
                 pathname: "/store",
-                storeId: data.storeId
+                storeId: data.storeId,
               })
             : this.props.history.push({
                 pathname: "/menuList",
                 userId: data.userId,
-                nickname: data.nickname
+                nickname: data.nickname,
               });
         });
       } else {
