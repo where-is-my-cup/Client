@@ -14,7 +14,7 @@ export default class SelectOptional extends Component {
                   : this.props.setKind(data);
               }}
             >
-              {data}1
+              {data}12
             </Button>
           ))}
         </ButtonGroup>
