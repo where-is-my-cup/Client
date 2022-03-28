@@ -133,7 +133,7 @@ export default class IndexView extends Component {
             <Col xs="6" className="MenuDetail-textInfo">
               <h1>{this.state.selectMenu.menuname}</h1>
               <h5 style={{ marginTop: "50px" }}>{this.state.selectMenu.description}</h5>
-              가격 : {this.state.selectMenu.price}원
+              가격 : {this.state.selectMenu.price}원1
             </Col>
           </Row>
 
