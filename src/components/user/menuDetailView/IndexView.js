@@ -5,6 +5,7 @@ import SelectOptional from "./SelectOptional";
 import swal from "sweetalert";
 
 export default class IndexView extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
