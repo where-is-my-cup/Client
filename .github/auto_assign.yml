@@ -1,11 +1,1 @@
-addReviewers: false
-# Enable to add reviewers as assignees.
 addAssignees: author
-
-reviewers: 
-  - gogoJH
-
-skipKeywords:
-  - wip
-
-numberOfReviewers: 0
